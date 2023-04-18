@@ -15,6 +15,7 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import {ReactiveFormsModule} from "@angular/forms";
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { UserAccountComponent } from './pages/user-account/user-account.component';
+import { AccountButtonComponent } from './components/account-button/account-button.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserAccountComponent } from './pages/user-account/user-account.componen
     UpdateAccountComponent,
     CreateAccountComponent,
     ForgetPasswordComponent,
-    UserAccountComponent
+    UserAccountComponent,
+    AccountButtonComponent
   ],
   imports: [
     BrowserModule,
