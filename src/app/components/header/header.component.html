@@ -1,0 +1,26 @@
+<div class="header-wrapper">
+  <div class="header-content-container">
+    <div class="header-img-container">
+      <img id="header-factory-img" src="./assets/img/usine.svg" alt="Image d'une usine">
+    </div>
+    <div class="header-title">
+      <h1>CODEWHAREHOUSE</h1>
+    </div>
+  </div>
+
+  <div class="header-content-container">
+    <ng-container *ngIf="this.loggedIn">
+      <div class="header-user-img image">
+        <img id="header-user-img" src="./assets/img/user-solid.svg" alt="Image d'un logo utilisateur">
+      </div>
+      <div class="image">
+        <img id="header-logout-img" src="./assets/img/power-off-solid.svg" alt="Logo Power off">
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!this.loggedIn">
+      <div class="image">
+        <img id="header-login-img" src="./assets/img/right-from-bracket-solid.svg" alt="Logo représentant quelque chose qui rentre en passant une porte">
+      </div>
+    </ng-container>
+  </div>
+</div>
