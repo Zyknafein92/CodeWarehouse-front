@@ -10,4 +10,8 @@ export class LittleButtonComponent {
   label!: string;
   @Input()
   radius?: string;
+  @Input()
+  color?: string
+  @Input()
+  textColor?: string;
 }

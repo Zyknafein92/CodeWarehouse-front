@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+  <div class="content-container">
+
+    <div class="form-container">
+    <form [formGroup]="forms">
+      <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Email..." formControlName="email" required >
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" id="password" placeholder="Password..." formControlName="email" required >
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" id="password2" placeholder="Retapez votre password..." formControlName="email" required >
+      </div>
+    </form>
+    </div>
+
+    <div class="button-container">
+      <app-validation-button label=" {{ 's\'inscrire' | uppercase}}"></app-validation-button>
+      <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" ></app-little-button>
+    </div>
+
+  </div>
+</div>

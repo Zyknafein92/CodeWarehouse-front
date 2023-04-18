@@ -1,6 +1,9 @@
 <div class="little-button-container">
   <button class="little-button"
-          style="border-radius:{{ radius || '10px' }}"
+          style="
+          border-radius:{{ radius || '10px' }};
+          background-color:{{ color || 'white'}};
+          color:{{ textColor || 'black' }}"
   >
     {{ label }}
   </button>
