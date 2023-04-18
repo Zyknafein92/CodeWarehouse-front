@@ -13,6 +13,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { UpdateAccountComponent } from './pages/update-account/update-account.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
+import { UserAccountComponent } from './pages/user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     LoginComponent,
     UpdateAccountComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    ForgetPasswordComponent,
+    UserAccountComponent
   ],
   imports: [
     BrowserModule,
