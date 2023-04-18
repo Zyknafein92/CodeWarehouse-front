@@ -9,6 +9,9 @@ import {RouterOutlet} from "@angular/router";
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './pages/login/login.component';
+import { UpdateAccountComponent } from './pages/update-account/update-account.component';
+import { CreateAccountComponent } from './pages/create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { AppRoutingModule } from './app-routing.module';
     LittleButtonComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    UpdateAccountComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,

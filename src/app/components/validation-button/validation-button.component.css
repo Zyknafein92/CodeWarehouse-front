@@ -1,8 +1,14 @@
 .validation-button {
   background-color: #2399DB;
+  font-family: Baloo, ui-serif;
+  font-size: 18px;
   color: white;
   text-align: center;
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 60px;
   border: none;
+}
+
+.validation-button:hover {
+  cursor: pointer;
 }

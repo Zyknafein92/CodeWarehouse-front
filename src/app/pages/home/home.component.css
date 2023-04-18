@@ -1,0 +1,105 @@
+.content-wrapper {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.first-content {
+  display: flex;
+  background-color: #d9d9d921;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.first-content-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+
+.first-content-right {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.first-content-title {
+  font-family: Zen, ui-serif;
+  font-size: 24px;
+}
+
+.first-content-texte {
+  font-family: Baloo, ui-serif;
+  font-size: 16px;
+  padding-bottom: 2%;
+}
+
+.second-content {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 5% 0;
+  gap: 5%;
+}
+
+.cards {
+  width: 30%;
+  background-color: #d9d9d921;
+  border-radius: 20px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-family: Zen, ui-serif;
+  text-align: center;
+}
+
+.card-text {
+  padding: 0 50px;
+  font-family: Baloo, ui-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+.card-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 2em 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+/* Image */
+
+#code-img {
+  width: 120px;
+  height: 120px;
+}
+
+#speedometer-img {
+  width: 36px;
+  height: 30px;
+}
+
+#lock-img {
+  width: 30px;
+  height: 34px;
+}
+
+#screen-img {
+  width: 30px;
+  height: 26px;
+}
