@@ -1,0 +1,13 @@
+.account-button {
+  font-family: Baloo, ui-serif;
+  font-size: 24px;
+  text-align: center;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.account-button:hover {
+  cursor: pointer;
+}

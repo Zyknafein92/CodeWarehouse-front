@@ -6,6 +6,7 @@ import {CreateAccountComponent} from "./pages/create-account/create-account.comp
 import {UpdateAccountComponent} from "./pages/update-account/update-account.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {UserAccountComponent} from "./pages/user-account/user-account.component";
+import {ProjectsViewComponent} from "./pages/projects-view/projects-view.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'user/create', component: CreateAccountComponent},
   { path: 'user/account', component: UserAccountComponent},
   { path: 'user/update', component: UpdateAccountComponent},
+  { path: 'user/projects', component: ProjectsViewComponent},
 
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 

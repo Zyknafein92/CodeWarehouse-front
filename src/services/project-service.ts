@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Project} from "../models/Project";
+import {SortDirection} from "@angular/material/sort";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectServiceService {
+export class ProjectService {
 
   private URL: string = '/api/project';
 
@@ -17,7 +18,7 @@ export class ProjectServiceService {
     return this.http.get<Project>(`${this.URL}/${uuid}`);
   }
 
-  getAllProjects(): Observable<Project[]> {
+  getAllProjects(sort: string, order: SortDirection, page: number): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.URL}`);
   }
 

@@ -6,7 +6,7 @@ import {User} from "../models/User";
 @Injectable({
   providedIn: 'root'
 })
-export class UserServiceService {
+export class UserService {
 
   private URL: string = '/api/user';
 

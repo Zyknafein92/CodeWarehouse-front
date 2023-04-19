@@ -6,7 +6,7 @@ import {CodePage} from "../models/CodePage";
 @Injectable({
   providedIn: 'root'
 })
-export class CodePageServiceService {
+export class CodePageService {
 
   private URL: string = '/api/project/pages';
 
