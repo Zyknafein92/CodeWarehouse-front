@@ -20,19 +20,18 @@
             <label for="true">Public</label><br>
            </div>
             <div>
-            <input type="radio" class="radio-element" id="false" name="isProjectPublic" value="CSS">
+            <input type="radio" class="radio-element" id="false" name="isProjectPublic" value="false">
             <label for="false">Privé</label><br>
             </div>
           </div>
         </div>
-
       </form>
     </div>
-
-    <div class="button-container">
-      <app-validation-button label=" {{ 'sauvegarder' | uppercase}}"></app-validation-button>
-      <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" ></app-little-button>
-    </div>
-
   </div>
+
+  <div class="button-container">
+    <app-validation-button label=" {{ 'sauvegarder' | uppercase}}"></app-validation-button>
+    <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" ></app-little-button>
+  </div>
+
 </div>

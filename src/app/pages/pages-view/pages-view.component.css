@@ -1,0 +1,31 @@
+/* Structure */
+.content-wrapper {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto 1vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-container {
+  margin-bottom: 2vh;
+}
+
+table {
+  width: 100%;
+  color: white;
+}
+
+.paginator {
+  color: white;
+}
+
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}

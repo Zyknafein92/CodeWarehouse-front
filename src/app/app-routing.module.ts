@@ -8,6 +8,8 @@ import {LoginComponent} from "./pages/login/login.component";
 import {UserAccountComponent} from "./pages/user-account/user-account.component";
 import {ProjectsViewComponent} from "./pages/projects-view/projects-view.component";
 import {ProjectEditComponent} from "./pages/project-edit/project-edit.component";
+import {PageEditComponent} from "./pages/page-edit/page-edit.component";
+import {PagesViewComponent} from "./pages/pages-view/pages-view.component";
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'user/update', component: UpdateAccountComponent},
   { path: 'user/projects', component: ProjectsViewComponent},
   { path: 'project/edit', component: ProjectEditComponent},
+  { path: 'user/project/pages', component: PagesViewComponent},
+  { path: 'page/edit', component: PageEditComponent},
 
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 

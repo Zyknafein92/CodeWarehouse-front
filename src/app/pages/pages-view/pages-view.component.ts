@@ -1,17 +1,17 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {Project} from "../../../models/Project";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {Project} from "../../../models/Project";
-import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 import {ProjectService} from "../../../services/project-service";
+import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 
 @Component({
-  selector: 'app-projects-view',
-  templateUrl: './projects-view.component.html',
-  styleUrls: ['./projects-view.component.css']
+  selector: 'app-pages-view',
+  templateUrl: './pages-view.component.html',
+  styleUrls: ['./pages-view.component.css']
 })
-export class ProjectsViewComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Nom du projet', 'Modifier', 'Supprimer'];
+export class PagesViewComponent implements AfterViewInit {
+  displayedColumns: string[] = ['Nom de la page', 'Modifier', 'Supprimer'];
   data: Project[] = [];
 
   resultsLength = 0;
