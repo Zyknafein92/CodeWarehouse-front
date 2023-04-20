@@ -12,3 +12,7 @@
 .validation-button:hover {
   cursor: pointer;
 }
+
+.validation-button:disabled {
+  cursor: not-allowed;
+}

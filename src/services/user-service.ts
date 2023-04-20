@@ -8,10 +8,10 @@ import {User} from "../models/User";
 })
 export class UserService {
 
-  private URL: string = '/api/user';
+  private URL: string = 'http://localhost:8080/api/user';
 
-  constructor(private http: HttpClient) {
-  }
+
+  constructor(private http: HttpClient) {}
 
   getUser(uuid: string): Observable<User> {
     return this.http.get<User>(`${this.URL}/${uuid}`);

@@ -19,3 +19,19 @@ body {
 p, h1, h2 {
   color: white;
 }
+
+/* Input */
+input > .ng-untouched {
+  color: black;
+  border: black 25px;
+}
+
+input > .ng-valid {
+  color: limegreen;
+  border-color: limegreen;
+}
+
+input > .ng-invalid, .ng-dirty, .ng-touched {
+  color: red;
+  border-color: red;
+}

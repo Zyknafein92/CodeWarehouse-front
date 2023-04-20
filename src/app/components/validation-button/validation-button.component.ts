@@ -9,13 +9,8 @@ export class ValidationButtonComponent {
 
   @Input()
   label!: string;
-
-  // @Input()
-  // clickFn(): Function;
-
+  @Input()
+  disabled?: boolean;
   constructor() {}
 
-  // onClick(): void {
-  //   if(this.clickFn!()) this.clickFn!();
-  // }
 }
