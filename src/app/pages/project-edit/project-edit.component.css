@@ -1,0 +1,107 @@
+.content-wrapper {
+  width: 90%;
+  margin: 0 auto 5% auto;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d921;
+  border-radius: 20px;
+  width: 50%;
+}
+
+.title {
+  font-family: Zen, ui-serif;
+  text-align: center;
+}
+
+.radio-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Baloo, ui-serif;
+  font-size: 18px;
+  color: white;
+  margin-top: 2rem;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: space-evenly;
+  border: none;
+}
+
+.radio-element {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  margin: 0 10px;
+
+  border: 2px solid black;
+  transition: 0.2s all linear;
+  position: relative;
+  top: 4px;
+}
+
+.radio-container input:checked {
+  border: 4px solid white;
+}
+
+.radio-container button {
+  color: white;
+  background-color: black;
+  padding: 5px 10px;
+  border-radius: 0;
+  border: 0;
+}
+
+.radio-container button:active {
+  background-color: white;
+  outline: 2px solid black;
+}
+
+.radio-container button:hover, button:focus {
+  color: black;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group > input {
+  width: 50%;
+  padding: 8px;
+  margin: 2rem auto;
+  border-radius: 5px;
+  font-family: Baloo, ui-serif;
+  font-size: 16px;
+}
+
+.text-area {
+  width: 50%;
+  padding: 8px;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-family: Baloo, ui-serif;
+  font-size: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+}

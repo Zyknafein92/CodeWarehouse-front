@@ -7,6 +7,7 @@ import {UpdateAccountComponent} from "./pages/update-account/update-account.comp
 import {LoginComponent} from "./pages/login/login.component";
 import {UserAccountComponent} from "./pages/user-account/user-account.component";
 import {ProjectsViewComponent} from "./pages/projects-view/projects-view.component";
+import {ProjectEditComponent} from "./pages/project-edit/project-edit.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'user/account', component: UserAccountComponent},
   { path: 'user/update', component: UpdateAccountComponent},
   { path: 'user/projects', component: ProjectsViewComponent},
+  { path: 'project/edit', component: ProjectEditComponent},
 
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 

@@ -12,7 +12,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {LoginComponent} from './pages/login/login.component';
 import {UpdateAccountComponent} from './pages/update-account/update-account.component';
 import {CreateAccountComponent} from './pages/create-account/create-account.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ForgetPasswordComponent} from './pages/forget-password/forget-password.component';
 import {UserAccountComponent} from './pages/user-account/user-account.component';
 import {AccountButtonComponent} from './components/account-button/account-button.component';
@@ -23,8 +23,9 @@ import {MatTableModule} from "@angular/material/table";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
-import { PageEditComponent } from './pages/page-edit/page-edit.component';
+import {ProjectEditComponent} from './pages/project-edit/project-edit.component';
+import {PageEditComponent} from './pages/page-edit/page-edit.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { PageEditComponent } from './pages/page-edit/page-edit.component';
     MatTableModule,
     HttpClientModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatRadioModule,
+    FormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
