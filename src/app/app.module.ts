@@ -26,6 +26,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {ProjectEditComponent} from './pages/project-edit/project-edit.component';
 import {PageEditComponent} from './pages/page-edit/page-edit.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { ProjectsSearchPageComponent } from './pages/projects-search-page/projects-search-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatRadioModule} from "@angular/material/radio";
     ProjectsViewComponent,
     PagesViewComponent,
     ProjectEditComponent,
-    PageEditComponent
+    PageEditComponent,
+    ProjectsSearchPageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,11 @@
   justify-content: center;
 }
 
+.title {
+  font-family: Zen, ui-serif;
+  text-align: center;
+}
+
 .content-container {
   display: flex;
   flex-direction: column;

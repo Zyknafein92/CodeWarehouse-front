@@ -9,6 +9,9 @@
   margin: 4em auto 4em auto;
 }
 
+.redirection:hover {
+  cursor: pointer;
+}
 
 .header-content-container {
   display: flex;

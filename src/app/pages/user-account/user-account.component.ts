@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-account',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class UserAccountComponent {
 
+  constructor(private router: Router) {
+  }
+
+  moveToUserProject() {
+    this.router.navigate(['/user/projects']);
+  }
+
+  moveToUpdateUserAccount() {
+    this.router.navigate(['/user/update']);
+  }
+
+  deleteAccount() {
+    //todo: add confirmation && service appel
+  }
 }

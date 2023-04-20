@@ -4,6 +4,7 @@ import {MatSort} from "@angular/material/sort";
 import {Project} from "../../../models/Project";
 import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 import {ProjectService} from "../../../services/project-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-projects-view',
@@ -22,7 +23,7 @@ export class ProjectsViewComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   clickedRows: any;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private router: Router) {
   }
 
   ngAfterViewInit() {
@@ -57,5 +58,9 @@ export class ProjectsViewComponent implements AfterViewInit {
         }),
       )
       .subscribe(data => (this.data = data));
+  }
+
+  moveToAddProject() {
+    this.router.navigate(['/project/edit'])
   }
 }

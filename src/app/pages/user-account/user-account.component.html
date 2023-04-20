@@ -2,15 +2,15 @@
   <div class="button-container">
 
     <div class="button">
-      <app-account-button label=" {{ 'Gérer mes projets' }}"></app-account-button>
+      <app-account-button label=" {{ 'Gérer mes projets' }}" (click)="moveToUserProject()"></app-account-button>
     </div>
 
     <div class="button">
-    <app-account-button label=" {{ 'Modifier mes informations de compte' }}"></app-account-button>
+    <app-account-button label=" {{ 'Modifier mes informations de compte' }}" (click)="moveToUpdateUserAccount()"></app-account-button>
     </div>
 
     <div class="button">
-      <app-account-button label=" {{ 'Supprimer mon compte' }}" color="red" textColor="white"></app-account-button>
+      <app-account-button label=" {{ 'Supprimer mon compte' }}" color="red" textColor="white" (click)="deleteAccount()"></app-account-button>
     </div>
 
   </div>

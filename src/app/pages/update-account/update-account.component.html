@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <div class="content-container">
-
+    <h2 class="title">Mettre à jour mes informations de compte</h2>
     <div class="form-container">
       <form [formGroup]="forms">
         <div class="form-group">
@@ -18,8 +18,8 @@
     </div>
 
     <div class="button-container">
-      <app-validation-button label=" {{ 'modifier' | uppercase}}"></app-validation-button>
-      <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" ></app-little-button>
+      <app-validation-button label=" {{ 'modifier' | uppercase}}" (click)="onSubmit()"></app-validation-button>
+      <app-little-button label=" {{ 'annuler' | uppercase }}" (click)="cancel()" radius="60px" color="red" textColor="white" ></app-little-button>
     </div>
 
   </div>

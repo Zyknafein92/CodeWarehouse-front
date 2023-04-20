@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-project-edit',
@@ -9,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class ProjectEditComponent implements OnInit{
   forms!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -24,5 +25,12 @@ export class ProjectEditComponent implements OnInit{
         isProjectPublic: [false, Validators.required],
       }
     )
+  }
+
+  onSubmit() {
+  }
+
+  cancel() {
+  this.router.navigate(['/user/projects']);
   }
 }

@@ -10,6 +10,7 @@ import {ProjectsViewComponent} from "./pages/projects-view/projects-view.compone
 import {ProjectEditComponent} from "./pages/project-edit/project-edit.component";
 import {PageEditComponent} from "./pages/page-edit/page-edit.component";
 import {PagesViewComponent} from "./pages/pages-view/pages-view.component";
+import {ProjectsSearchPageComponent} from "./pages/projects-search-page/projects-search-page.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'user/account', component: UserAccountComponent},
   { path: 'user/update', component: UpdateAccountComponent},
   { path: 'user/projects', component: ProjectsViewComponent},
+  { path: 'project/search', component: ProjectsSearchPageComponent},
   { path: 'project/edit', component: ProjectEditComponent},
   { path: 'user/project/pages', component: PagesViewComponent},
   { path: 'page/edit', component: PageEditComponent},
