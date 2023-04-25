@@ -26,20 +26,19 @@ export class ProjectsViewComponent implements AfterViewInit {
   constructor(private projectService: ProjectService, private router: Router) {
   }
 
-  ngAfterViewInit() {
+   ngAfterViewInit() {
 
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.projectService.getAllProjects(
-            this.sort.active,
-            this.sort.direction,
+          return this.projectService.getAllProjectOfUser(
+            30,
             this.paginator.pageIndex,
+            this.sort,
           ).pipe(catchError(() => of(null)));
         }),
         map(data => {
@@ -58,7 +57,7 @@ export class ProjectsViewComponent implements AfterViewInit {
         }),
       )
       .subscribe(data => (this.data = data));
-  }
+   }
 
   moveToAddProject() {
     this.router.navigate(['/project/edit'])

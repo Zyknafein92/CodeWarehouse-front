@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {Project} from "../../../models/Project";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {ProjectService} from "../../../services/project-service";
 import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
+import {CodePageService} from "../../../services/code-page-service";
+import {CodePage} from "../../../models/CodePage";
 
 @Component({
   selector: 'app-pages-view',
@@ -12,7 +12,7 @@ import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 })
 export class PagesViewComponent implements AfterViewInit {
   displayedColumns: string[] = ['Nom de la page', 'Modifier', 'Supprimer'];
-  data: Project[] = [];
+  data: CodePage[] = [];
 
   resultsLength = 0;
   isLoadingResults = true;
@@ -22,7 +22,7 @@ export class PagesViewComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   clickedRows: any;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private codePageService: CodePageService) {
   }
 
   ngAfterViewInit() {
@@ -35,7 +35,7 @@ export class PagesViewComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.projectService.getAllProjects(
+          return this.codePageService.getAllProjectPages(
             this.sort.active,
             this.sort.direction,
             this.paginator.pageIndex,

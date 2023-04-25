@@ -27,6 +27,9 @@ import {ProjectEditComponent} from './pages/project-edit/project-edit.component'
 import {PageEditComponent} from './pages/page-edit/page-edit.component';
 import {MatRadioModule} from "@angular/material/radio";
 import { ProjectsSearchPageComponent } from './pages/projects-search-page/projects-search-page.component';
+import { SharedProjectViewComponent } from './pages/shared-project-view/shared-project-view.component';
+import {CodemirrorModule} from "@ctrl/ngx-codemirror";
+
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { ProjectsSearchPageComponent } from './pages/projects-search-page/projec
     PagesViewComponent,
     ProjectEditComponent,
     PageEditComponent,
-    ProjectsSearchPageComponent
+    ProjectsSearchPageComponent,
+    SharedProjectViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import { ProjectsSearchPageComponent } from './pages/projects-search-page/projec
     MatSortModule,
     MatPaginatorModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    CodemirrorModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

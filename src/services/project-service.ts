@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Project} from "../models/Project";
-import {SortDirection} from "@angular/material/sort";
+import {Sort, SortDirection} from "@angular/material/sort";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  private URL: string = '/api/project';
+  private URL: string = 'http://localhost:8080/api/projects';
 
   constructor(private http: HttpClient) {
   }
@@ -18,10 +18,17 @@ export class ProjectService {
     return this.http.get<Project>(`${this.URL}/${uuid}`);
   }
 
-  getAllProjects(sort: string, order: SortDirection, page: number): Observable<Project[]> {
+  getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.URL}`);
   }
 
+  getAllProjectOfUser(pageNumber: number, pageSize: number, sort: any): Observable<Project[]> {
+    const params: HttpParams = new HttpParams();
+    params.set('pageNumber', pageNumber);
+    params.set('pageSize', pageSize);
+    params.set('sort', sort);
+    return this.http.get<Project[]>(`${this.URL + '/user'}`, { params });
+  }
   addProject(project: Project): Observable<Project> {
     return this.http.post<Project>(`${this.URL}`, project);
   }

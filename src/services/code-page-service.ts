@@ -2,19 +2,24 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CodePage} from "../models/CodePage";
+import {SortDirection} from "@angular/material/sort";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CodePageService {
 
-  private URL: string = '/api/project/pages';
+  private URL: string = 'http://localhost:8080/api/project/pages';
 
   constructor(private http: HttpClient) {
   }
 
   getCodePage(uuid: string): Observable<CodePage> {
     return this.http.get<CodePage>(`${this.URL}/${uuid}`);
+  }
+
+  getAllProjectPages(active: string, direction: SortDirection, pageIndex: number): Observable<CodePage[]> {
+    return this.http.get<CodePage[]>(`${this.URL}`);
   }
 
   addCodePage(codePage: CodePage): Observable<CodePage> {

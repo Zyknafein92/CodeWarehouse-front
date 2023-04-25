@@ -15,7 +15,6 @@
             <div *ngIf="forms.get('email')?.errors?.['required']">
               Un email est requis.
             </div>
-
           </div>
         </div>
 
@@ -35,7 +34,6 @@
             <div *ngIf="forms.get('password')?.errors?.['minlength'] || forms.get('password')?.errors?.['maxlength']">
               Votre mot de passe doit faire entre 8 et 16 caractères.
             </div>
-
           </div>
         </div>
 

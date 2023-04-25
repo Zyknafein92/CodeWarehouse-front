@@ -11,8 +11,9 @@ import {UserService} from "../../../services/user-service";
 export class CreateAccountComponent implements OnInit {
 
   forms!: FormGroup;
+  //todo: message d'erreur si adresse déjà utilisée
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private userService: UserService) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {}
   ngOnInit(): void {
     this.initializeForm();
   }
@@ -22,15 +23,17 @@ export class CreateAccountComponent implements OnInit {
       {
         email: new FormControl('', Validators.compose([
           Validators.required,
-          Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}')
+          Validators.email
         ])),
-        password: new FormControl('', [
+        password: new FormControl('', Validators.compose([
+          Validators.required,
           Validators.minLength(8),
           Validators.maxLength(16)]
-        ),
-        password2: new FormControl('', [
+        )),
+        password2: new FormControl('',Validators.compose( [
+          Validators.required,
           Validators.minLength(8),
-          Validators.maxLength(16)])
+          Validators.maxLength(16)]))
       }, {validators: passwordMatchValidator}
     )
   }
@@ -40,8 +43,8 @@ export class CreateAccountComponent implements OnInit {
       this.forms.markAllAsTouched();
       return;
     }
-    this.userService.addUser(this.forms.value).subscribe(response => {
-      console.log('user', response);
+    this.userService.addUser(this.forms.value).subscribe(user => {
+      console.log('user', user);
     })
   }
 
@@ -56,10 +59,8 @@ export class CreateAccountComponent implements OnInit {
   }
 }
 
-
-
 export const passwordMatchValidator: Validators = (formGroup: FormGroup): ValidationErrors | null => {
-  if (formGroup.get('password')?.value === formGroup?.get('password2')?.value)
+  if (formGroup.get('password')?.value === formGroup.get('password2')?.value)
     return null;
   else
     return {passwordMismatch: true};

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {ProjectService} from "../../../services/project-service";
 
 @Component({
   selector: 'app-project-edit',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 export class ProjectEditComponent implements OnInit{
   forms!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private projectService: ProjectService) {
   }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class ProjectEditComponent implements OnInit{
   private initializeForm() {
     this.forms = this.formBuilder.group(
       {
+        ownerUuid: 'ef05abe2-e3c2-4a65-9944-d9a65c78a90d', //todo : refactor
         name: ['', Validators.required],
         description: ['', Validators.required],
         isProjectPublic: [false, Validators.required],
@@ -28,6 +30,7 @@ export class ProjectEditComponent implements OnInit{
   }
 
   onSubmit() {
+    this.projectService.addProject(this.forms.value).subscribe( project => console.log(project));
   }
 
   cancel() {

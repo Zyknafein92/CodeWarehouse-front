@@ -50,3 +50,22 @@
   justify-content: space-evenly;
   margin: 2rem 0;
 }
+
+.error {
+  color: red;
+}
+
+.form-group > input.ng-untouched {
+  color: black;
+}
+
+.form-group > input.ng-valid {
+  color: limegreen !important;
+  border-color: limegreen !important;
+}
+
+.form-group > input.ng-invalid {
+  color: red;
+  border-color: red;
+}
+

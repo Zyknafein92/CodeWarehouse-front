@@ -1,6 +1,9 @@
 /// <reference types="@angular/localize" />
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/mode/clike/clike';
 
 import { AppModule } from './app/app.module';
 

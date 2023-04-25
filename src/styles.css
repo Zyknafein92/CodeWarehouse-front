@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/base16-dark.css';
+@import 'codemirror/theme/material.css';
 
 @font-face {
   font-family: "Zen";
@@ -16,22 +19,25 @@ body {
   padding: 0;
 }
 
-p, h1, h2 {
+p, span, h1, h2 {
   color: white;
 }
 
 /* Input */
-input > .ng-untouched {
+.error {
+  color: red;
+}
+
+.form-group > input.ng-untouched {
   color: black;
-  border: black 25px;
 }
 
-input > .ng-valid {
-  color: limegreen;
-  border-color: limegreen;
+.form-group > input.ng-valid {
+  color: limegreen !important;
+  border-color: limegreen !important;
 }
 
-input > .ng-invalid, .ng-dirty, .ng-touched {
+.form-group > input.ng-invalid {
   color: red;
   border-color: red;
 }
