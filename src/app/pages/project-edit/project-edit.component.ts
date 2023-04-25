@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectService} from "../../../services/project-service";
 
 @Component({
@@ -10,12 +10,38 @@ import {ProjectService} from "../../../services/project-service";
 })
 export class ProjectEditComponent implements OnInit{
   forms!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private router: Router, private projectService: ProjectService) {
+  uuid: string = '';
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private projectService: ProjectService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(
+      (params) => {
+         this.uuid = params['uuid'];
+        if (this.uuid) {
+          this.patchValue(this.uuid);
+        }
+      });
     this.initializeForm();
+  }
+
+  onSubmit() {
+    if (!this.uuid) {
+      this.projectService.addProject(this.forms.value).subscribe(next => {
+        this.router.navigate(['/user/projects']);
+      });
+    } else {
+      this.projectService.updateProject(this.uuid, this.forms.value).subscribe( next => {
+        this.router.navigate(['/user/projects']);
+      });
+    }
+  }
+
+  cancel() {
+    this.router.navigate(['/user/projects']);
   }
 
   private initializeForm() {
@@ -29,11 +55,16 @@ export class ProjectEditComponent implements OnInit{
     )
   }
 
-  onSubmit() {
-    this.projectService.addProject(this.forms.value).subscribe( project => console.log(project));
-  }
-
-  cancel() {
-  this.router.navigate(['/user/projects']);
+  private patchValue(uuid: string) {
+    this.projectService.getProject(uuid).subscribe( data => {
+      this.forms.patchValue({
+        projectUuid: data.projectUuid,
+        ownerUuid: data.ownerUuid,
+        name: data.name,
+        description: data.description,
+        isProjectPublic: data.isProjectPublic,
+        codePageList: data.codePageList,
+      })
+    });
   }
 }

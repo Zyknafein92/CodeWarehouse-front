@@ -28,6 +28,16 @@ p, span, h1, h2 {
   color: red;
 }
 
+.form-group > .error {
+  margin: -1.5rem auto 2rem auto;
+  width: 50%;
+}
+
+.text-area-error {
+  margin: 5px auto 2rem auto !important;
+  width: 50%;
+}
+
 .form-group > input.ng-untouched {
   color: black;
 }
@@ -41,3 +51,4 @@ p, span, h1, h2 {
   color: red;
   border-color: red;
 }
+

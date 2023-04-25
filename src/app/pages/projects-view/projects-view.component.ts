@@ -4,7 +4,7 @@ import {MatSort} from "@angular/material/sort";
 import {Project} from "../../../models/Project";
 import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 import {ProjectService} from "../../../services/project-service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-projects-view',
@@ -21,13 +21,11 @@ export class ProjectsViewComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  clickedRows: any;
 
-  constructor(private projectService: ProjectService, private router: Router) {
+  constructor(private projectService: ProjectService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
-   ngAfterViewInit() {
-
+  ngAfterViewInit() {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
     merge(this.sort.sortChange, this.paginator.page)
@@ -57,9 +55,27 @@ export class ProjectsViewComponent implements AfterViewInit {
         }),
       )
       .subscribe(data => (this.data = data));
-   }
+  }
 
   moveToAddProject() {
     this.router.navigate(['/project/edit'])
+  }
+
+  deleteProject(uuid: string) {
+    this.projectService.deleteProject(uuid).subscribe(
+      next  => {
+        let item = this.data.find(item => item.projectUuid === uuid);
+        this.data.splice(this.data.indexOf(item!));
+        //trigger for render table again without delete value
+        this.paginator._changePageSize(this.paginator.pageSize);
+      },
+      error => {
+        console.log(error.error.message)
+      });
+
+  }
+
+  editProject(uuid: string) {
+    this.router.navigate(['project/edit'], {queryParams: {uuid}});
   }
 }
