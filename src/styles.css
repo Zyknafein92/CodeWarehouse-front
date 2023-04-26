@@ -23,6 +23,15 @@ p, span, h1, h2 {
   color: white;
 }
 
+.link {
+  color: #2399DB;
+  text-decoration: underline;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
 /* Input */
 .error {
   color: red;

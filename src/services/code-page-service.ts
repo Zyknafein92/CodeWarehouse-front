@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CodePage} from "../models/CodePage";
-import {SortDirection} from "@angular/material/sort";
+import {CodePagePaging} from "../models/CodePagePaging";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CodePageService {
 
-  private URL: string = 'http://localhost:8080/api/project/pages';
+  private URL: string = 'http://localhost:8080/api/pages';
 
   constructor(private http: HttpClient) {
   }
@@ -18,8 +18,12 @@ export class CodePageService {
     return this.http.get<CodePage>(`${this.URL}/${uuid}`);
   }
 
-  getAllProjectPages(active: string, direction: SortDirection, pageIndex: number): Observable<CodePage[]> {
-    return this.http.get<CodePage[]>(`${this.URL}`);
+  getAllProjectPages(uuid: string, pageNumber: number, pageSize: number, sort: any): Observable<CodePage[]> {
+    const params: HttpParams = new HttpParams();
+    params.set('pageNumber', pageNumber);
+    params.set('pageSize', pageSize);
+    params.set('sort', sort);
+    return this.http.post<CodePage[]>(`http://localhost:8080/api/project/${uuid}/pages`, { params } );
   }
 
   addCodePage(codePage: CodePage): Observable<CodePage> {

@@ -15,18 +15,22 @@ import {SharedProjectViewComponent} from "./pages/shared-project-view/shared-pro
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'user/create', component: CreateAccountComponent},
+  /* Route AuthGuard */
   { path: 'user/account', component: UserAccountComponent},
   { path: 'user/update', component: UpdateAccountComponent},
   { path: 'user/projects', component: ProjectsViewComponent},
-  { path: 'project/search', component: ProjectsSearchPageComponent},
-  { path: 'project/edit', component: ProjectEditComponent},
-  { path: 'project/view', component: SharedProjectViewComponent},
-  { path: 'user/project/pages', component: PagesViewComponent},
-  { path: 'page/edit', component: PageEditComponent},
+  { path: 'user/project/edit', component: ProjectEditComponent},
+  { path: 'user/project/edit/:projectUuid', component: ProjectEditComponent, pathMatch: 'full'},
+  { path: 'user/project/:projectUuid/pages', component: PagesViewComponent, pathMatch: 'full'},
+  { path: 'user/project/:projectUuid/page/edit', component: PageEditComponent,  pathMatch: 'full'},
+  { path: 'user/project/:projectUuid/page/edit/:codePageUuid', component: PageEditComponent, pathMatch: 'full'},
 
+  /* Route non nécessairement log */
+  { path: 'project/view/:projectUuid', component: SharedProjectViewComponent, pathMatch: 'full'},
+  { path: 'project/search', component: ProjectsSearchPageComponent},
+  { path: 'user/create', component: CreateAccountComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'home', component: HomeComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 
 ]

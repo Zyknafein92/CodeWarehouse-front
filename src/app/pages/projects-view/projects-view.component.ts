@@ -22,7 +22,8 @@ export class ProjectsViewComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private projectService: ProjectService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private projectService: ProjectService,
+              private router: Router) {
   }
 
   ngAfterViewInit() {
@@ -58,7 +59,15 @@ export class ProjectsViewComponent implements AfterViewInit {
   }
 
   moveToAddProject() {
-    this.router.navigate(['/project/edit'])
+    this.router.navigate(['user/project/edit'])
+  }
+
+  moveToProjectPagesView(project: Project) {
+    this.router.navigate(['user/project', project.projectUuid, 'pages']);
+  }
+
+  editProject(uuid: string) {
+    this.router.navigate(['user/project/edit', uuid]);
   }
 
   deleteProject(uuid: string) {
@@ -73,9 +82,5 @@ export class ProjectsViewComponent implements AfterViewInit {
         console.log(error.error.message)
       });
 
-  }
-
-  editProject(uuid: string) {
-    this.router.navigate(['project/edit'], {queryParams: {uuid}});
   }
 }

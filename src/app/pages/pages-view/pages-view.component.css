@@ -10,17 +10,58 @@
 
 .button-container {
   margin-bottom: 2vh;
+  display: flex;
+  justify-content: space-between;
 }
 
+
+.edit-icon-img-container {
+  display: flex;
+  margin: 0 5.5%;
+}
+
+.edit-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.trash-icon-img-container {
+  display: flex;
+  margin: 0 7%;
+}
+
+.trash-icon {
+  width: 25px;
+  height: 25px;
+}
+
+/* Table  */
 table {
   width: 100%;
   color: white;
+  font-family: Baloo, ui-serif;
+  font-size: 16px;
 }
 
-.paginator {
-  color: white;
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.example-rate-limit-reached {
+  max-width: 360px;
+  text-align: center;
+}
+
+/* Column Widths */
 .mat-column-number,
 .mat-column-state {
   max-width: 64px;
@@ -28,4 +69,14 @@ table {
 
 .mat-column-created {
   max-width: 124px;
+}
+
+.mat-mdc-paginator {
+  color: white;
+  font-family: Baloo, ui-serif;
+  font-size: 16px;
+}
+
+::ng-deep .mat-mdc-icon-button svg  {
+  color: white !important;
 }

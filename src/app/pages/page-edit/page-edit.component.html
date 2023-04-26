@@ -9,6 +9,17 @@
         </div>
 
         <div class="form-group">
+          <select label="Langage" formControlName="language" id="language-selector" required>
+            <option value="">-- Choisir un langage --</option>
+            <option value="javascript">JS / TS</option>
+            <option value="java">Java</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="markdown">Markdown / GitHub</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <textarea class="text-area"
                     id="code"
                     placeholder="Code..."
@@ -31,8 +42,8 @@
     </div>
 
     <div class="button-container">
-      <app-validation-button label=" {{ 'sauvegarder' | uppercase}}"></app-validation-button>
-      <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" ></app-little-button>
+      <app-validation-button label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
+      <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" (click)="cancel()"></app-little-button>
     </div>
 
   </div>

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {CodePageService} from "../../../services/code-page-service";
 
 @Component({
   selector: 'app-page-edit',
@@ -9,22 +11,65 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PageEditComponent implements OnInit{
 
   forms!: FormGroup;
-
-
-  constructor(private formBuilder: FormBuilder) {
+  projectUuid: string = '';
+  codePageUuid: string = '';
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private codePageService: CodePageService) {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(
+      (params) => {
+        this.codePageUuid = params['codePageUuid'];
+        this.projectUuid = params['projectUuid']
+        if (this.codePageUuid) {
+          this.patchValue(this.codePageUuid);
+        }
+      });
     this.initializeForm();
   }
 
-  private initializeForm() {
+  onSubmit(): void {
+    if (!this.projectUuid) {
+      this.codePageService.addCodePage(this.forms.value).subscribe(resp => {
+        this.router.navigate(['user/project/:uuid/pages', this.projectUuid]);
+      });
+    } else {
+      this.codePageService.updateCodePage(this.projectUuid, this.forms.value).subscribe(resp => {
+        this.router.navigate(['user/project/:uuid/pages', this.projectUuid]);
+      });
+    }
+  }
+
+  cancel(): void {
+    this.router.navigate(['user/project', this.projectUuid, 'pages']);
+  }
+
+  private initializeForm(): void {
     this.forms = this.formBuilder.group(
       {
+        projectUuid: this.projectUuid,
         name: ['', Validators.required],
+        language: ['', Validators.required],
         codeTextContent: ['', Validators.required],
         codeCommentary: ['', Validators.required],
       }
     )
+  }
+
+  private patchValue(uuid: string) {
+    this.codePageService.getCodePage(uuid).subscribe( data => {
+      this.forms.patchValue({
+        codePageUuid: data.codePageUuid,
+        projectUuid: data.projectUuid,
+        name: data.name,
+        language: data.language,
+        isLocked : data.isLocked,
+        codeCommentary: data.codeCommentary,
+        codeTextContent: data.codeTextContent
+      })
+    });
   }
 }

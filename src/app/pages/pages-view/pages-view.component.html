@@ -1,7 +1,8 @@
 <div class="content-wrapper">
 
   <div class="button-container">
-    <app-little-button label="{{'Créer une page' | uppercase}}"></app-little-button>
+    <app-little-button  label="{{ 'Créer une page' | uppercase}}" (click)="moveToAddPage()"></app-little-button>
+    <app-little-button  label="{{ 'Vue éditeur' | uppercase }}" (click)="moveToEditorView()"></app-little-button>
   </div>
 
   <table mat-table [dataSource]="data"
@@ -10,27 +11,32 @@
 
     <ng-container matColumnDef="Nom de la page">
       <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[0] | uppercase}}</th>
-      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      <td mat-cell *matCellDef="let row">
+        <span>{{ row.name }}</span>
+      </td>
     </ng-container>
 
+    <!-- Symbol Column -->
     <ng-container matColumnDef="Modifier">
       <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[1] | uppercase}}</th>
-      <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+      <td mat-cell *matCellDef="let row">
+        <div class="edit-icon-img-container" (click)="editPage(row.codePageUuid)">
+          <img class="edit-icon" src="assets/img/clipboard-solid.svg" alt="icone d'un carnet">
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="Supprimer">
       <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[2] | uppercase}}</th>
-      <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+      <td mat-cell *matCellDef="let row">
+        <div class="trash-icon-img-container" (click)="deletePage(row.codePageUuid)">
+          <img class="trash-icon" src="assets/img/trash-solid.svg" alt="icone de poubelle">
+        </div>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      mat-row
-      (click)="clickedRows.add(row)"
-      [class.demo-row-is-clicked]="clickedRows.has(row)"
-      *matRowDef="let row; columns: displayedColumns;"
-    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator class="paginator" [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
-
+  <mat-paginator class="paginator" [length]="resultsLength" [pageSize]="20" aria-label="Select of pages"></mat-paginator>
 </div>

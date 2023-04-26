@@ -29,6 +29,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import { ProjectsSearchPageComponent } from './pages/projects-search-page/projects-search-page.component';
 import { SharedProjectViewComponent } from './pages/shared-project-view/shared-project-view.component';
 import {CodemirrorModule} from "@ctrl/ngx-codemirror";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import {CodemirrorModule} from "@ctrl/ngx-codemirror";
     MatPaginatorModule,
     MatRadioModule,
     FormsModule,
-    CodemirrorModule
+    CodemirrorModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

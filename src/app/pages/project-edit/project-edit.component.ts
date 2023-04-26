@@ -18,9 +18,9 @@ export class ProjectEditComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(
+    this.activatedRoute.params.subscribe(
       (params) => {
-         this.uuid = params['uuid'];
+         this.uuid = params['projectUuid'];
         if (this.uuid) {
           this.patchValue(this.uuid);
         }
