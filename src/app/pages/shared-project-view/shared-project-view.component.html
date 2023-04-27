@@ -1,0 +1,44 @@
+<div class="content-wrapper">
+  <div class="content-container">
+    <div class="content-right-side">
+      <ngx-codemirror *ngIf="this.codePage"
+                      [(ngModel)]="this.codePage.codeTextContent"
+                      [options]="{
+    lineNumbers: true,
+    theme: 'base16-dark',
+    mode: this.codePage.language,
+  }"></ngx-codemirror>
+    </div>
+    <div class="content-left-side">
+      <div class="left-side-options-container">
+        <div class="checkbox-container">
+          <input type="checkbox" id="isLocked" name="isLocked" value="isLocked" (click)="switchCodePageModificationStatusMode()">
+          <label for="isLocked"><span>Autoriser la modification</span></label>
+        </div>
+
+        <div class="button-container">
+          <app-little-button label="Projet" radius="60px" (click)="switchDisplayMode()"></app-little-button>
+        </div>
+        <div class="button-container">
+          <app-little-button label="Notes" radius="60px" (click)="switchDisplayMode()"></app-little-button>
+        </div>
+      </div>
+
+      <ng-container *ngIf="isNotesViewActive && this.codePage">
+        <div class="display-content-container" *ngIf="this.codePage.codeCommentary != '' ">
+          <p>{{ this.codePage.codeCommentary }}</p>
+        </div>
+        <div class="display-content-container" *ngIf="this.codePage.codeCommentary == ''">
+          <p> Aucun commentaire n'a été saisi pour le moment. </p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isProjectViewActive">
+        <div class="display-content-container">
+          <div class="page-list-container"  *ngFor="let page of this.project.codePageList">
+          <p class="link" (click)="displayNewCodePage(page.codePageUuid)">{{page.name}}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CodePage} from "../models/CodePage";
-import {CodePagePaging} from "../models/CodePagePaging";
 
 @Injectable({
   providedIn: 'root'

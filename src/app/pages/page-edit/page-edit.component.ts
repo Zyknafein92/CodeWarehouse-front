@@ -32,13 +32,13 @@ export class PageEditComponent implements OnInit{
   }
 
   onSubmit(): void {
-    if (!this.projectUuid) {
+    if (!this.codePageUuid) {
       this.codePageService.addCodePage(this.forms.value).subscribe(resp => {
-        this.router.navigate(['user/project/:uuid/pages', this.projectUuid]);
+        this.router.navigate(['user/project', this.projectUuid, 'pages']);
       });
     } else {
       this.codePageService.updateCodePage(this.projectUuid, this.forms.value).subscribe(resp => {
-        this.router.navigate(['user/project/:uuid/pages', this.projectUuid]);
+        this.router.navigate(['user/project', this.projectUuid, 'pages']);
       });
     }
   }
@@ -53,6 +53,7 @@ export class PageEditComponent implements OnInit{
         projectUuid: this.projectUuid,
         name: ['', Validators.required],
         language: ['', Validators.required],
+        isLocked : [true],
         codeTextContent: ['', Validators.required],
         codeCommentary: ['', Validators.required],
       }
