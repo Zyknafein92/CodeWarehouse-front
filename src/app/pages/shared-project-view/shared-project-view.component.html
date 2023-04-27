@@ -1,41 +1,48 @@
 <div class="content-wrapper">
   <div class="content-container">
     <div class="content-right-side">
-      <ngx-codemirror *ngIf="this.codePage"
+      <ngx-codemirror   *ngIf="this.codePage"
                       [(ngModel)]="this.codePage.codeTextContent"
-                      [options]="{
-    lineNumbers: true,
-    theme: 'base16-dark',
-    mode: this.codePage.language,
-  }"></ngx-codemirror>
+                      [options]=
+                        "{lineNumbers: true,
+                          theme: 'base16-dark',
+                          mode: this.codePage.language,
+                        }">
+      </ngx-codemirror>
     </div>
     <div class="content-left-side">
       <div class="left-side-options-container">
         <div class="checkbox-container">
-          <input type="checkbox" id="isLocked" name="isLocked" value="isLocked" (click)="switchCodePageModificationStatusMode()">
+          <form [formGroup]="forms">
+          <input type="checkbox" id="isLocked" name="isLocked" value="isLocked" formControlName="isLocked" (click)="switchCodePageModificationStatusMode()">
           <label for="isLocked"><span>Autoriser la modification</span></label>
+          </form>
         </div>
 
         <div class="button-container">
-          <app-little-button label="Projet" radius="60px" (click)="switchDisplayMode()"></app-little-button>
+          <app-little-button label="Projet" radius="60px" (click)="switchDisplayModeToProject()"></app-little-button>
         </div>
         <div class="button-container">
-          <app-little-button label="Notes" radius="60px" (click)="switchDisplayMode()"></app-little-button>
+          <app-little-button label="Notes" radius="60px" (click)="switchDisplayModeToCommentary()"></app-little-button>
         </div>
       </div>
 
       <ng-container *ngIf="isNotesViewActive && this.codePage">
-        <div class="display-content-container" *ngIf="this.codePage.codeCommentary != '' ">
-          <p>{{ this.codePage.codeCommentary }}</p>
-        </div>
-        <div class="display-content-container" *ngIf="this.codePage.codeCommentary == ''">
-          <p> Aucun commentaire n'a été saisi pour le moment. </p>
+        <div class="display-content-container-text-area" *ngIf="this.codePage.codeCommentary != '' ">
+          <form [formGroup]="forms" >
+          <textarea autosize class="text-area-content"
+                    id="code"
+                    placeholder="Code..."
+                    formControlName="codeCommentary"
+                    rows="15"
+                    required ></textarea>
+          </form>
         </div>
       </ng-container>
       <ng-container *ngIf="isProjectViewActive">
         <div class="display-content-container">
           <div class="page-list-container"  *ngFor="let page of this.project.codePageList">
-          <p class="link" (click)="displayNewCodePage(page.codePageUuid)">{{page.name}}</p>
+            <p class="link" (click)="displayNewCodePage(page.codePageUuid)">{{page.name}}</p>
           </div>
         </div>
       </ng-container>

@@ -60,3 +60,7 @@ p, span, h1, h2 {
   border-color: red;
 }
 
+.CodeMirror {
+  height: 100%;
+  max-height: 1920px;
+}

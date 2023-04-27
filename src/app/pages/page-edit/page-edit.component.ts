@@ -55,7 +55,7 @@ export class PageEditComponent implements OnInit{
         language: ['', Validators.required],
         isLocked : [true],
         codeTextContent: ['', Validators.required],
-        codeCommentary: ['', Validators.required],
+        codeCommentary: ['Aucun commentaire n\'a été saisi pour le moment.', Validators.required],
       }
     )
   }

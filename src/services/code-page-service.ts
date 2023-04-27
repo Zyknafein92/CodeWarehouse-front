@@ -34,7 +34,7 @@ export class CodePageService {
   }
 
   updateCodePageModificationStatus(uuid: string, status: boolean): Observable<Boolean> {
-    return this.http.put<boolean>(`${this.URL}/${uuid}`, status);
+    return this.http.patch<boolean>(`${this.URL}/${uuid}/status`, status);
   }
 
   deleteCodePage(uuid: string): Observable<void> {

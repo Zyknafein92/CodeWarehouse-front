@@ -31,6 +31,7 @@ import { SharedProjectViewComponent } from './pages/shared-project-view/shared-p
 import {CodemirrorModule} from "@ctrl/ngx-codemirror";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {AutosizeModule} from "ngx-autosize";
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {MatSelectModule} from "@angular/material/select";
     FormsModule,
     CodemirrorModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    AutosizeModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
