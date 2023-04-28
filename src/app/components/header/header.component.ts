@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/Security/token-storage.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,17 @@ import {TokenStorageService} from "../../../services/Security/token-storage.serv
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  tokenEmail: string | null  = null;
-  constructor(private router: Router, private tokenStorageService: TokenStorageService) {
+  tokenEmail: string | undefined;
+  $observable: Subscription = new Subscription();
+
+  constructor(private router: Router, private tokenStorageService: TokenStorageService, ) {
   }
 
   ngOnInit(): void {
-    this.tokenStorageService.watchTokenStorage().subscribe(val => {
+  this.tokenStorageService.watchTokenStorage().subscribe(val => {
       this.tokenEmail = val;
-    })
+    });
   }
-
   moveToHomePage() {
     this.router.navigate(['/home']);
   }
@@ -29,11 +31,12 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.tokenStorageService.signOut();
+    this.tokenEmail = '';
     this.router.navigate(['/home']);
   }
 
   /* User not LoggedIn */
   login(): void {
-    this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
   }
 }

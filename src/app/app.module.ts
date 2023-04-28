@@ -25,13 +25,14 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {ProjectEditComponent} from './pages/project-edit/project-edit.component';
 import {PageEditComponent} from './pages/page-edit/page-edit.component';
 import {MatRadioModule} from "@angular/material/radio";
-import { ProjectsSearchPageComponent } from './pages/projects-search-page/projects-search-page.component';
-import { SharedProjectViewComponent } from './pages/shared-project-view/shared-project-view.component';
+import {ProjectsSearchPageComponent} from './pages/projects-search-page/projects-search-page.component';
+import {SharedProjectViewComponent} from './pages/shared-project-view/shared-project-view.component';
 import {CodemirrorModule} from "@ctrl/ngx-codemirror";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {AutosizeModule} from "ngx-autosize";
 import {CookieService} from 'ngx-cookie-service';
+import {httpInterceptorProviders} from "../services/Security/auth-interceptor.service";
 
 
 @NgModule({
@@ -72,7 +73,7 @@ import {CookieService} from 'ngx-cookie-service';
     MatSelectModule,
     AutosizeModule,
   ],
-  providers: [HttpClient, CookieService],
+  providers: [HttpClient, CookieService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

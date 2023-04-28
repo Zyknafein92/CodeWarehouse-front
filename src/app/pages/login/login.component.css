@@ -37,13 +37,15 @@
 .link-container {
   display: flex;
   flex-direction: column;
-  text-align: center;
   gap: 2em;
-  color: #2399DB;
+}
+
+.link {
+  margin: 0 auto;
 }
 
 a {
-  color: #1862F1;
+  color: #2399DB;
   font-size: 16px;
   font-family: Baloo, ui-serif;
 }

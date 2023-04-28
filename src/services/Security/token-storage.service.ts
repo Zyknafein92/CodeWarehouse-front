@@ -7,19 +7,17 @@ import {BehaviorSubject, Observable} from "rxjs";
 })
 
 export class TokenStorageService {
-  private role?: string;
-  private cookie$: BehaviorSubject<string> = new BehaviorSubject('');
+  private cookie$: BehaviorSubject<string> = new BehaviorSubject(this.getEmail());
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService) {}
 
   signOut(): void {
     this.cookieService.deleteAll();
-    this.cookie$.next('');
   }
 
   public saveToken(token: string | undefined): void {
     if (typeof token === "string") {
-      this.cookieService.set('jwt-token', JSON.stringify(token));
+      this.cookieService.set('jwt-token', token);
     }
   }
 
@@ -28,8 +26,8 @@ export class TokenStorageService {
   }
 
   public saveEmail(email: string | undefined): void {
-    if (typeof email === "string" && email != '') {
-      this.cookieService.set('token-email', JSON.stringify(email));
+    if (email) {
+      this.cookieService.set('token-email', email);
       this.cookie$.next(email);
     }
   }
@@ -40,17 +38,6 @@ export class TokenStorageService {
 
   public saveAuthorities(authorities: string[]): void {
     this.cookieService.set('token-authority', JSON.stringify(authorities));
-  }
-
-  public getAuthorities(): string {
-    this.role = '';
-    const authoritiesString = this.cookieService.get('token-authority');
-    if (authoritiesString) {
-      JSON.parse(authoritiesString).forEach((authority: string | string[]) => {
-        this.role = authority.length > 0 ? authority[0] : '';
-      });
-    }
-    return this.role;
   }
 
   watchTokenStorage() : Observable<string> {

@@ -58,6 +58,6 @@
 
     <div class="button-container">
       <app-little-button label="{{ 'découvrir les projets' | uppercase }}" radius="60px" (click)="moveToSearchPage()"></app-little-button>
-      <app-validation-button label="{{ 'S\'INSCRIRE' | uppercase }}" (click)="moveToSignInPage()"></app-validation-button>
+      <app-validation-button  *ngIf="this.tokenEmail == ''" label="{{ 'S\'INSCRIRE' | uppercase }}" (click)="moveToSignInPage()"></app-validation-button>
     </div>
 </div>

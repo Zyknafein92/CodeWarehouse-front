@@ -17,6 +17,10 @@ export class UserService {
     return this.http.get<User>(`${this.URL}/${uuid}`);
   }
 
+  getUserProfil(): Observable<User> {
+    return this.http.get<User>(`${this.URL}/userProfil`);
+  }
+
   addUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.URL}`, user);
   }
@@ -25,7 +29,7 @@ export class UserService {
     return this.http.put<User>(`${this.URL}/${uuid}`, user);
   }
 
-  deleteUser(uuid: string): Observable<void> {
-    return this.http.delete<void>(`${this.URL}/${uuid}`);
+  deleteUser(): Observable<void> {
+    return this.http.delete<void>(`${this.URL}/delete`);
   }
 }
