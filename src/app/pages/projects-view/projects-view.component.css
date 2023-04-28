@@ -14,7 +14,7 @@
 
 .edit-icon-img-container {
   display: flex;
-  margin: 0 5.5%;
+  margin: 0 1.4rem;
 }
 
 .edit-icon {
@@ -24,7 +24,7 @@
 
 .trash-icon-img-container {
   display: flex;
-  margin: 0 7%;
+  margin: 0 1.8rem;
 }
 
 .trash-icon {

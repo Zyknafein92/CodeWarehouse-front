@@ -12,6 +12,7 @@ export class CreateAccountComponent implements OnInit {
 
   forms!: FormGroup;
   //todo: message d'erreur si adresse déjà utilisée
+  private errorMessage: '' = '';
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {}
   ngOnInit(): void {
@@ -43,9 +44,12 @@ export class CreateAccountComponent implements OnInit {
       this.forms.markAllAsTouched();
       return;
     }
-    this.userService.addUser(this.forms.value).subscribe(user => {
-      console.log('user', user);
-    })
+    this.userService.addUser(this.forms.value).subscribe(next => {
+        this.router.navigate(['/']);
+      },
+      error => {
+        this.errorMessage = error.error.message;
+      });
   }
 
   cancel():void {

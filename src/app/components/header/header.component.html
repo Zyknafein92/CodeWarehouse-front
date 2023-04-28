@@ -9,15 +9,15 @@
   </div>
 
   <div class="header-content-container">
-    <ng-container *ngIf="this.loggedIn">
+    <ng-container *ngIf="this.tokenEmail">
       <div class="image redirection" (click)="moveToAccountPage()">
         <img id="header-user-img" src="./assets/img/user-solid.svg" alt="Image d'un logo utilisateur">
       </div>
-      <div class="image redirection" (click)="disconnectUser()">
+      <div class="image redirection" (click)="logout()">
         <img id="header-logout-img" src="./assets/img/power-off-solid.svg" alt="Logo Power off">
       </div>
     </ng-container>
-    <ng-container *ngIf="!this.loggedIn">
+    <ng-container *ngIf="!this.tokenEmail">
       <div class="image redirection" (click)="login()">
         <img id="header-login-img" src="./assets/img/right-from-bracket-solid.svg" alt="Logo représentant quelque chose qui rentre en passant une porte">
       </div>

@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {Project} from "../../../models/Project";
-import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
+import {catchError, map, merge, of, pipe, startWith, switchMap} from "rxjs";
 import {ProjectService} from "../../../services/project-service";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./projects-view.component.css']
 })
 export class ProjectsViewComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Nom du projet', 'Modifier', 'Supprimer'];
+  displayedColumns: string[] = ['Nom du projet', 'Visibilité du projet', 'Modifier', 'Supprimer'];
   data: Project[] = [];
 
   resultsLength = 0;

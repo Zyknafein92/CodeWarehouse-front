@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../../../services/Security/token-storage.service";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-
-  loggedIn: boolean = true;
-  constructor(private router: Router) {
+export class HeaderComponent implements OnInit {
+  tokenEmail: string | null  = null;
+  constructor(private router: Router, private tokenStorageService: TokenStorageService) {
   }
 
+  ngOnInit(): void {
+    this.tokenStorageService.watchTokenStorage().subscribe(val => {
+      this.tokenEmail = val;
+    })
+  }
 
   moveToHomePage() {
     this.router.navigate(['/home']);
@@ -19,20 +24,16 @@ export class HeaderComponent {
 
   /* User LoggedIn */
   moveToAccountPage(): void {
-    //todo : check login security
     this.router.navigate(['/user/account']);
   }
 
-  disconnectUser(): void {
-    //todo: disconnect user
-    this.loggedIn = false;
+  logout(): void {
+    this.tokenStorageService.signOut();
     this.router.navigate(['/home']);
   }
 
   /* User not LoggedIn */
   login(): void {
-    this.loggedIn = true;
     this.router.navigate(['/login']);
   }
-
 }

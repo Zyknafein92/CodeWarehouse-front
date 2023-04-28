@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppComponent} from './app.component';
 import {ValidationButtonComponent} from './components/validation-button/validation-button.component';
 import {LittleButtonComponent} from './components/little-button/little-button.component';
@@ -32,6 +31,7 @@ import {CodemirrorModule} from "@ctrl/ngx-codemirror";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {AutosizeModule} from "ngx-autosize";
+import {CookieService} from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -70,9 +70,9 @@ import {AutosizeModule} from "ngx-autosize";
     CodemirrorModule,
     MatInputModule,
     MatSelectModule,
-    AutosizeModule
+    AutosizeModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
