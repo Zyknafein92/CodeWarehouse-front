@@ -1,21 +1,23 @@
 <div class="content-wrapper">
   <div class="content-container">
     <div class="content-right-side">
-      <ngx-codemirror   *ngIf="this.codePage"
+      <ngx-codemirror *ngIf="this.codePage"
                       [(ngModel)]="this.codePage.codeTextContent"
+                      (ngModelChange)="editContent()"
                       [options]=
                         "{lineNumbers: true,
                           theme: 'base16-dark',
                           mode: this.codePage.language,
+                          readOnly: this.isReadOnly,
                         }">
       </ngx-codemirror>
     </div>
     <div class="content-left-side">
       <div class="left-side-options-container">
-        <div class="checkbox-container">
+        <div class="checkbox-container" *ngIf="this.isUserOwner">
           <form [formGroup]="forms">
-          <input type="checkbox" id="isLocked" name="isLocked" value="isLocked" formControlName="isLocked" (click)="switchCodePageModificationStatusMode()">
-          <label for="isLocked"><span>Autoriser la modification</span></label>
+            <input type="checkbox" id="isEditable" name="isEditable" value="isEditable" formControlName="isEditable" (click)="switchCodePageModificationStatusMode()">
+            <label for="isEditable"><span>Autoriser la modification</span></label>
           </form>
         </div>
 
@@ -35,7 +37,11 @@
                     placeholder="Code..."
                     formControlName="codeCommentary"
                     rows="15"
+                    [readOnly]="this.isReadOnly"
                     required ></textarea>
+            <div class="validation-button-container">
+              <app-validation-button *ngIf="!this.isReadOnly" label=" {{ 'sauvegarder' | uppercase}}" (click)="saveCodeCommentary()"></app-validation-button>
+            </div>
           </form>
         </div>
       </ng-container>

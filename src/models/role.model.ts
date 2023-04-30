@@ -1,9 +1,8 @@
 
-export interface RoleModel {
-    id?: number;
-    name?: Role.NameEnum;
-}
-
+// export interface RoleModel {
+//     id?: number;
+//     name?: Role.NameEnum;
+// }
 
 export namespace Role {
     export type NameEnum = 'USER' | 'ADMIN';

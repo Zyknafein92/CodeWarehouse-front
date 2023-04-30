@@ -46,7 +46,8 @@
         </div>
       </form>
       <div class="button-container">
-        <app-validation-button label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
+        <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
+        <app-validation-button *ngIf="this.forms.valid" label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
         <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" (click)="cancel()"></app-little-button>
       </div>
     </div>

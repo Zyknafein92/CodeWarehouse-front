@@ -10,7 +10,6 @@ import {Subscription} from "rxjs";
 })
 export class HeaderComponent implements OnInit {
   tokenEmail: string | undefined;
-  $observable: Subscription = new Subscription();
 
   constructor(private router: Router, private tokenStorageService: TokenStorageService, ) {
   }
@@ -18,6 +17,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   this.tokenStorageService.watchTokenStorage().subscribe(val => {
       this.tokenEmail = val;
+      console.log('token email on init', this.tokenEmail)
     });
   }
   moveToHomePage() {
@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     this.tokenEmail = '';
+
     this.router.navigate(['/home']);
   }
 

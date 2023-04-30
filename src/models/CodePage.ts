@@ -2,8 +2,8 @@ export interface CodePage {
   codePageUuid: string;
   projectUuid: string;
   name: string;
-  language: string; //todo: Refactor en enum ?
-  isLocked : boolean;
+  language: string;
+  isEditable : boolean;
   codeCommentary: string;
   codeTextContent: string;
 }

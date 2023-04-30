@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectService} from "../../../services/project-service";
+import {UserService} from "../../../services/user-service";
 
 @Component({
   selector: 'app-project-edit',
@@ -14,7 +15,8 @@ export class ProjectEditComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private projectService: ProjectService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class ProjectEditComponent implements OnInit{
         }
       });
     this.initializeForm();
+    this.initUser();
   }
 
   onSubmit() {
@@ -44,10 +47,10 @@ export class ProjectEditComponent implements OnInit{
     this.router.navigate(['/user/projects']);
   }
 
-  private initializeForm() {
+  private initializeForm(): void {
     this.forms = this.formBuilder.group(
       {
-        ownerUuid: 'ef05abe2-e3c2-4a65-9944-d9a65c78a90d', //todo : refactor
+        ownerUuid: '',
         name: ['', Validators.required],
         description: ['', Validators.required],
         isProjectPublic: [false, Validators.required],
@@ -55,7 +58,7 @@ export class ProjectEditComponent implements OnInit{
     )
   }
 
-  private patchValue(uuid: string) {
+  private patchValue(uuid: string) :void {
     this.projectService.getProject(uuid).subscribe( data => {
       this.forms.patchValue({
         projectUuid: data.projectUuid,
@@ -66,5 +69,12 @@ export class ProjectEditComponent implements OnInit{
         codePageList: data.codePageList,
       })
     });
+  }
+
+  private initUser(): void {
+    this.userService.getUserProfil().subscribe( data =>
+    this.forms.patchValue({
+      ownerUuid: data.userUuid
+    }));
   }
 }

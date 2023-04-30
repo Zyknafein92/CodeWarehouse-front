@@ -67,7 +67,7 @@ export class PageEditComponent implements OnInit{
         projectUuid: data.projectUuid,
         name: data.name,
         language: data.language,
-        isLocked : data.isLocked,
+        isLocked : data.isEditable,
         codeCommentary: data.codeCommentary,
         codeTextContent: data.codeTextContent
       })
