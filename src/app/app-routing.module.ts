@@ -12,6 +12,8 @@ import {PageEditComponent} from "./pages/page-edit/page-edit.component";
 import {PagesViewComponent} from "./pages/pages-view/pages-view.component";
 import {ProjectsSearchPageComponent} from "./pages/projects-search-page/projects-search-page.component";
 import {SharedProjectViewComponent} from "./pages/shared-project-view/shared-project-view.component";
+import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
+import {PasswordRecoverComponent} from "./pages/password-recover/password-recover.component";
 
 
 const routes: Routes = [
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'project/view/:projectUuid', component: SharedProjectViewComponent, pathMatch: 'full'},
   { path: 'project/search', component: ProjectsSearchPageComponent},
   { path: 'user/create', component: CreateAccountComponent},
+  { path: 'user/forgot-password', component: ForgotPasswordComponent},
+  { path: 'user/password-recover', component: PasswordRecoverComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full'},

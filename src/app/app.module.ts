@@ -12,7 +12,7 @@ import {LoginComponent} from './pages/login/login.component';
 import {UpdateAccountComponent} from './pages/update-account/update-account.component';
 import {CreateAccountComponent} from './pages/create-account/create-account.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ForgetPasswordComponent} from './pages/forget-password/forget-password.component';
+import {ForgotPasswordComponent} from './pages/forgot-password/forgot-password.component';
 import {UserAccountComponent} from './pages/user-account/user-account.component';
 import {AccountButtonComponent} from './components/account-button/account-button.component';
 import {ProjectsViewComponent} from './pages/projects-view/projects-view.component';
@@ -33,6 +33,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {AutosizeModule} from "ngx-autosize";
 import {CookieService} from 'ngx-cookie-service';
 import {httpInterceptorProviders} from "../services/Security/auth-interceptor.service";
+import { PasswordRecoverComponent } from './pages/password-recover/password-recover.component';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import {httpInterceptorProviders} from "../services/Security/auth-interceptor.se
     LoginComponent,
     UpdateAccountComponent,
     CreateAccountComponent,
-    ForgetPasswordComponent,
+    ForgotPasswordComponent,
     UserAccountComponent,
     AccountButtonComponent,
     ProjectsViewComponent,
@@ -55,6 +56,7 @@ import {httpInterceptorProviders} from "../services/Security/auth-interceptor.se
     PageEditComponent,
     ProjectsSearchPageComponent,
     SharedProjectViewComponent,
+    PasswordRecoverComponent,
   ],
   imports: [
     BrowserModule,

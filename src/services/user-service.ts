@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/User";
 
@@ -16,6 +16,10 @@ export class UserService {
   getUser(uuid: string): Observable<User> {
     return this.http.get<User>(`${this.URL}/${uuid}`);
   }
+  getUserByToken(token: string): Observable<User> {
+    let params = new HttpParams().set("token", token);
+    return this.http.get<User>(`${this.URL}/forgot-password`, {params})
+  }
 
   getUserProfil(): Observable<User> {
     return this.http.get<User>(`${this.URL}/userProfil`);
@@ -25,8 +29,19 @@ export class UserService {
     return this.http.post<User>(`${this.URL}`, user);
   }
 
+  forgetPassword(password: string) {
+    const params = new HttpParams()
+      .set('email', password);
+    console.log(params)
+    return this.http.post<void>(`${this.URL}/forgetPassword`, params);
+  }
+
   updateUser(uuid: string, user: User): Observable<User> {
     return this.http.put<User>(`${this.URL}/${uuid}`, user);
+  }
+
+  updateUserPassword(userUuid: string, password: any) {
+    return this.http.patch<User>(`${this.URL}/${userUuid}/reset-password`, password);
   }
 
   deleteUser(): Observable<void> {
