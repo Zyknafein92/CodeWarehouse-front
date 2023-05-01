@@ -11,8 +11,7 @@ import {UserService} from "../../../services/user-service";
 export class CreateAccountComponent implements OnInit {
 
   forms!: FormGroup;
-  //todo: message d'erreur si adresse déjà utilisée
-  private errorMessage: '' = '';
+  errorMessage: '' = '';
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {}
   ngOnInit(): void {
@@ -44,12 +43,14 @@ export class CreateAccountComponent implements OnInit {
       this.forms.markAllAsTouched();
       return;
     }
-    this.userService.addUser(this.forms.value).subscribe(next => {
-        this.router.navigate(['/']);
-      },
-      error => {
+    this.userService.addUser(this.forms.value).subscribe(  {
+      complete: () => {},
+      error: (error) => {
         this.errorMessage = error.error.message;
-      });
+      },
+      next: () => {
+        this.router.navigate(['/']) },
+    });
   }
 
   cancel():void {

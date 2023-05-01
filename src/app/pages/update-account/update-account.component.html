@@ -5,20 +5,59 @@
       <form [formGroup]="forms">
         <div class="form-group">
           <input type="email" class="form-control" id="email" placeholder="Email..." formControlName="email" required >
+          <div *ngIf="forms.get('email')?.invalid && (forms.get('email')?.dirty ||forms.get('email')?.touched)"
+               class="error">
+            <div *ngIf="forms.get('email')?.errors?.['required']">
+              Un email est requis.
+            </div>
+          </div>
+          <div class="error" *ngIf="this.errorMessage != '' && (forms.get('email')?.dirty ||forms.get('email')?.touched)">
+            {{ this.errorMessage }}
+          </div>
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="password" placeholder="Password..." formControlName="email" required >
+          <input type="password"
+                 class="form-control"
+                 id="password"
+                 placeholder="Password..."
+                 formControlName="password"
+                 (input)="onPasswordInput()"
+                 required>
+          <div *ngIf="forms.get('password')?.invalid && (forms.get('password')?.dirty || forms.get('password')?.touched)"
+               class="error">
+            <div *ngIf="forms.get('password')?.errors?.['required']">
+              Un password est requis.
+            </div>
+            <div *ngIf="forms.get('password')?.errors?.['minlength'] || forms.get('password')?.errors?.['maxlength']">
+              Votre mot de passe doit faire entre 8 et 16 caractères.
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="password2" placeholder="Retapez votre password..." formControlName="email" required >
+          <input type="password"
+                 class="form-control"
+                 id="password2"
+                 placeholder="Retapez votre password..."
+                 formControlName="password2"
+                 (input)="onPasswordInput()"
+                 required>
+
+          <div *ngIf="forms.get('password2')?.invalid && (forms.get('password2')?.dirty || forms.get('password2')?.touched)"
+               class="error">
+            <div *ngIf="forms.get('password2')?.invalid && !forms.get('password2')?.hasError('passwordMismatch')">
+              Vos mots de passes ne correspondent pas.
+            </div>
+          </div>
         </div>
+
       </form>
     </div>
 
     <div class="button-container">
-      <app-validation-button label=" {{ 'modifier' | uppercase}}" (click)="onSubmit()"></app-validation-button>
+      <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label="{{ 'modifier' | uppercase}}" (click)="onSubmit()"></app-validation-button>
+      <app-validation-button *ngIf="this.forms.valid"  label="{{ 'modifier' | uppercase}}" (click)="onSubmit()"></app-validation-button>
       <app-little-button label=" {{ 'annuler' | uppercase }}" (click)="cancel()" radius="60px" color="red" textColor="white" ></app-little-button>
     </div>
 

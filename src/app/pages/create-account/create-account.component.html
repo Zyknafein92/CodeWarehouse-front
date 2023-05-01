@@ -16,6 +16,9 @@
               Un email est requis.
             </div>
           </div>
+          <div class="error" *ngIf="this.errorMessage != '' && (forms.get('email')?.dirty ||forms.get('email')?.touched)">
+            {{ this.errorMessage }}
+          </div>
         </div>
 
         <div class="form-group">
