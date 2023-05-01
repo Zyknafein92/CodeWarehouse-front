@@ -9,7 +9,11 @@ import {TranslateService} from "@ngx-translate/core";
 export class AppComponent {
   title = 'codeWarehouse';
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('fr');
-    translate.use('fr');
+    translate.setDefaultLang('en');
+    translate.addLangs(['fr', 'en']);
+    translate.use('en');
+    if(this.translate.getBrowserLang() == 'fr') {
+      this.translate.use('fr');
+    }
   }
 }

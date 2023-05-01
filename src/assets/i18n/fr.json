@@ -1,4 +1,7 @@
 {
+  "header": {
+    "title": "CODEWHAREHOUSE"
+  },
   "page": {
     "create-account": {
       "title": "Créer mon compte"
