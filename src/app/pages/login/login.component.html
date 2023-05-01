@@ -5,10 +5,10 @@
       <form [formGroup]="forms">
         <div class="form-group">
           <input type="email" class="form-control" id="email" placeholder="Email..." formControlName="email" required >
-          <div *ngIf="forms.get('email')?.invalid && (forms.get('email')?.dirty || forms.get('email')?.touched)"
+          <div *ngIf="(forms.get('email')?.dirty || forms.get('email')?.touched)"
                class="error">
-            <div *ngIf="forms.get('email')?.errors?.['required']">
-              Veuillez renseigner une adresse e-mail valide !
+            <div *ngIf="this.errorMessage != ''">
+              {{ this.errorMessage }}
             </div>
           </div>
         </div>
@@ -17,8 +17,8 @@
           <input type="password" class="form-control" id="password" placeholder="Password..." formControlName="password" required >
           <div *ngIf="forms.get('password')?.invalid && (forms.get('password')?.dirty || forms.get('password')?.touched)"
                class="error">
-            <div *ngIf="this.errorMessage !== ''">
-              Mot de passe invalide !
+            <div *ngIf="forms.get('password')?.errors?.['required']">
+              Un password est requis.
             </div>
           </div>
         </div>

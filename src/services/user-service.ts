@@ -13,9 +13,6 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(uuid: string): Observable<User> {
-    return this.http.get<User>(`${this.URL}/${uuid}`);
-  }
   getUserByToken(token: string): Observable<User> {
     let params = new HttpParams().set("token", token);
     return this.http.get<User>(`${this.URL}/forgot-password`, {params})

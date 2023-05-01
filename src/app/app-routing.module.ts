@@ -14,21 +14,51 @@ import {ProjectsSearchPageComponent} from "./pages/projects-search-page/projects
 import {SharedProjectViewComponent} from "./pages/shared-project-view/shared-project-view.component";
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
 import {PasswordRecoverComponent} from "./pages/password-recover/password-recover.component";
+import {AuthGuardService} from "../services/Security/auth-guard.service";
 
 
 const routes: Routes = [
   /* Route AuthGuard */
-  { path: 'user/account', component: UserAccountComponent},
-  { path: 'user/update', component: UpdateAccountComponent},
-  { path: 'user/projects', component: ProjectsViewComponent},
-  { path: 'user/project/edit', component: ProjectEditComponent},
-  { path: 'user/project/edit/:projectUuid', component: ProjectEditComponent, pathMatch: 'full'},
-  { path: 'user/project/:projectUuid/pages', component: PagesViewComponent, pathMatch: 'full'},
-  { path: 'user/project/:projectUuid/page/edit', component: PageEditComponent,  pathMatch: 'full'},
-  { path: 'user/project/:projectUuid/page/edit/:codePageUuid', component: PageEditComponent, pathMatch: 'full'},
+  { path: 'user/account',
+    component: UserAccountComponent,
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/update',
+    component: UpdateAccountComponent,
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/projects',
+    component: ProjectsViewComponent,
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/project/edit',
+    component: ProjectEditComponent,
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/project/edit/:projectUuid',
+    component: ProjectEditComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/project/:projectUuid/pages',
+    component: PagesViewComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/project/:projectUuid/page/edit',
+    component: PageEditComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]},
+
+  { path: 'user/project/:projectUuid/page/edit/:codePageUuid',
+    component: PageEditComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]},
 
   /* Route non nécessairement log */
-  { path: 'project/view/:projectUuid', component: SharedProjectViewComponent, pathMatch: 'full'},
+  { path: 'project/view/:projectUuid',
+    component: SharedProjectViewComponent,
+    pathMatch: 'full'},
   { path: 'project/search', component: ProjectsSearchPageComponent},
   { path: 'user/create', component: CreateAccountComponent},
   { path: 'user/forgot-password', component: ForgotPasswordComponent},
