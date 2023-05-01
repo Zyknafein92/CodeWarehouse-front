@@ -66,17 +66,17 @@
     "home": "Retour à la page d'accueil"
   },
   "error": {
-    "email-required": "Un email est requis.",
-    "password-required": "Un mot de passe est requis",
-    "password-mismatch": "Les mot de passes ne correspondent pas",
-    "password-size" : " Votre mot de passe doit faire entre 8 et 16 caractères.",
-    "token-invalid": "Une erreur s'est produite. Le token a expiré ou il est invalide",
-    "project-name": "Un nom de projet est requis",
-    "project-description": "Une description du projet est requise",
-    "project-visibility": "Définissez si votre projet est public ou privé."
+    "email-required": "Un email est requis !",
+    "password-required": "Un mot de passe est requis !",
+    "password-mismatch": "Les mot de passes ne correspondent pas !",
+    "password-size" : " Votre mot de passe doit faire entre 8 et 16 caractères !",
+    "token-invalid": "Une erreur s'est produite. Le token a expiré ou il est invalid !",
+    "project-name": "Un nom de projet est requis !",
+    "project-description": "Une description du projet est requise !",
+    "project-visibility": "Définissez si votre projet est public ou privé !"
   },
   "success": {
-    "account-created": "Votre compte a été créé, nous allons vous rediriger dans quelques quelques secondes !",
+    "account-created": "Votre compte a été créé, nous allons vous rediriger dans quelques quelques secondes.",
     "password-recover": "Votre mot de passe a bien été modifié, vous allez être redirigé dans un instant."
   },
   "label": {

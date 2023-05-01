@@ -1,0 +1,100 @@
+{
+  "page": {
+    "create-account": {
+      "title": "Create my account"
+    },
+    "forgot-password": {
+      "title": "Forgot your password ?",
+      "text": {
+        "text1": "Forgot your password? Enter your email address below.",
+        "text2": "If your address matches a known address, we will send you an email.",
+        "text3": "You will be automatically redirected to the home page once the form is validated."
+      }
+    },
+    "home": {
+      "item": {
+        "what-is-it": {
+          "title": "CODEWHAREHOUSE, WHAT IS IT ?",
+          "text1": "Discover a simple and efficient solution to share your code online.",
+          "text2": "Whether you are a student or a teacher, we help you share your creations while allowing you to exchange with others."
+        },
+        "easy-and-fast": {
+          "title": "EASY & FAST",
+          "text": "Share in a few clicks on our editor code in a few seconds! As easy as copy/paste!"
+        },
+        "space": {
+          "title": "MANAGE YOUR SPACE",
+          "text": "Decide yourself if you want your code to be visible to others and/or if they can modify it."
+        },
+        "visit": {
+          "title": "EXPLORE",
+          "text": "Our solution is perfect for sharing code online with students."
+        }
+      }
+    },
+    "pageEdit": {
+      "title-add": "Create a page",
+      "title-edit": "Edit a page"
+    },
+    "password-recover": {
+      "title": "Forgotten password",
+      "text": "Please set your new password:"
+    },
+    "projectEdit": {
+      "title-add": "Create a project",
+      "title-edit": "Modify a project"
+    },
+    "update-account": {
+      "title":"Update my account information"
+    }
+  },
+  "button": {
+    "discover": "Discover the projects",
+    "cancel": "CANCEL",
+    "signUp": "SIGN UP",
+    "save": "SAVE",
+    "login": "LOGIN",
+    "editorView": "EDITOR VIEW",
+    "addPage": "Create a page",
+    "addProject": "Create a project",
+    "project": "PROJECT",
+    "commentary": "COMMENTS"
+  },
+  "link": {
+    "subscribe": "New to this site? Register here",
+    "forgot-password": "Forgot your password?",
+    "home": "Back to the home page"
+  },
+  "error": {
+    "email-required": "An email is required.",
+    "password-required": "A password is required !",
+    "password-mismatch": "Passwords do not match !",
+    "password-size" : "Your password must be between 8 and 16 characters long !",
+    "token-invalid": "An error has occurred. The token has expired or is invalid !",
+    "project-name": "A project name is required !",
+    "project-description": "A description of the project is required !",
+    "project-visibility": "Define if your project is public or private !"
+  },
+  "success": {
+    "account-created": "Your account has been created, we will redirect you in a few seconds!",
+    "password-recover": "Your password has been changed, you will be redirected in a moment."
+  },
+  "label": {
+    "email": "Email...",
+    "password": "Password...",
+    "password-again": "Enter your password again...",
+    "page-name": "Name of the page...",
+    "language": "-- Select a language --",
+    "code": "Copy your code here, or just write something down. You will be able to edit it in the editor by clicking on Editor View after creation",
+    "commentary": "Comments or notes on the code...",
+    "project-management": "Manage my projects",
+    "project-name": "Project name...",
+    "project-description": "A brief description of the project...",
+    "project-visibility": "Visibility of the project",
+    "project-visibility-public": "Public",
+    "project-visibility-private": "Private",
+    "modificationAuthorized": "Authorize the modification",
+    "account-management": "Edit my account information",
+    "account-delete": "Delete my account"
+  }
+}
