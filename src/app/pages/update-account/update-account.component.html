@@ -1,14 +1,19 @@
 <div class="content-wrapper">
   <div class="content-container">
-    <h2 class="title">Mettre à jour mes informations de compte</h2>
+    <h2 class="title">{{ 'page.update-account.title' | translate }}</h2>
     <div class="form-container">
       <form [formGroup]="forms">
         <div class="form-group">
-          <input type="email" class="form-control" id="email" placeholder="Email..." formControlName="email" required >
+          <input type="email"
+                 class="form-control"
+                 id="email"
+                 placeholder="{{ 'label.email' | translate }}"
+                 formControlName="email"
+                 required >
           <div *ngIf="forms.get('email')?.invalid && (forms.get('email')?.dirty ||forms.get('email')?.touched)"
                class="error">
             <div *ngIf="forms.get('email')?.errors?.['required']">
-              Un email est requis.
+              {{ 'error.email-required' | translate }}
             </div>
           </div>
           <div class="error" *ngIf="this.errorMessage != '' && (forms.get('email')?.dirty ||forms.get('email')?.touched)">
@@ -20,17 +25,17 @@
           <input type="password"
                  class="form-control"
                  id="password"
-                 placeholder="Password..."
+                 placeholder="{{ 'label.password' | translate }}"
                  formControlName="password"
                  (input)="onPasswordInput()"
                  required>
           <div *ngIf="forms.get('password')?.invalid && (forms.get('password')?.dirty || forms.get('password')?.touched)"
                class="error">
             <div *ngIf="forms.get('password')?.errors?.['required']">
-              Un password est requis.
+              {{ 'error.password-required' | translate }}
             </div>
             <div *ngIf="forms.get('password')?.errors?.['minlength'] || forms.get('password')?.errors?.['maxlength']">
-              Votre mot de passe doit faire entre 8 et 16 caractères.
+              {{ 'error.password-size' | translate }}
             </div>
           </div>
         </div>
@@ -39,7 +44,7 @@
           <input type="password"
                  class="form-control"
                  id="password2"
-                 placeholder="Retapez votre password..."
+                 placeholder="{{ 'label.password-again' | translate }}"
                  formControlName="password2"
                  (input)="onPasswordInput()"
                  required>
@@ -47,7 +52,7 @@
           <div *ngIf="forms.get('password2')?.invalid && (forms.get('password2')?.dirty || forms.get('password2')?.touched)"
                class="error">
             <div *ngIf="forms.get('password2')?.invalid && !forms.get('password2')?.hasError('passwordMismatch')">
-              Vos mots de passes ne correspondent pas.
+              {{ 'error.password-mismatch' | translate }}
             </div>
           </div>
         </div>
@@ -56,9 +61,9 @@
     </div>
 
     <div class="button-container">
-      <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label="{{ 'modifier' | uppercase}}" (click)="onSubmit()"></app-validation-button>
-      <app-validation-button *ngIf="this.forms.valid"  label="{{ 'modifier' | uppercase}}" (click)="onSubmit()"></app-validation-button>
-      <app-little-button label=" {{ 'annuler' | uppercase }}" (click)="cancel()" radius="60px" color="red" textColor="white" ></app-little-button>
+      <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label="{{ 'button.save' | translate}}" (click)="onSubmit()"></app-validation-button>
+      <app-validation-button *ngIf="this.forms.valid"  label="{{ 'button.save' | translate}}" (click)="onSubmit()"></app-validation-button>
+      <app-little-button label=" {{ 'button.cancel' | translate }}" (click)="cancel()" radius="60px" color="red" textColor="white" ></app-little-button>
     </div>
 
   </div>

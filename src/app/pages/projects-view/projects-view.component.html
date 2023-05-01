@@ -1,7 +1,7 @@
 <div class="content-wrapper">
 
   <div class="button-container">
-    <app-little-button label="{{'Créer un projet' | uppercase}}" (click)="moveToAddProject()"></app-little-button>
+    <app-little-button label="{{ 'button.addProject' | translate | uppercase }}" (click)="moveToAddProject()"></app-little-button>
   </div>
 
   <table mat-table [dataSource]="data"

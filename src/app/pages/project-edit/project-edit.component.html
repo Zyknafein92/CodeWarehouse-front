@@ -1,54 +1,54 @@
 <div class="content-wrapper">
   <div class="content-container">
-    <h2 class="title" *ngIf="this.uuid == null || this.uuid == ''">Créer un projet</h2>
-    <h2 class="title" *ngIf="this.uuid">Modifier un projet</h2>
+    <h2 class="title" *ngIf="this.uuid == null || this.uuid == ''"> {{'page.projectEdit.title-add' | translate }} </h2>
+    <h2 class="title" *ngIf="this.uuid"> {{'page.projectEdit.title-edit' | translate }} </h2>
     <div class="form-container">
       <form [formGroup]="forms">
 
         <div class="form-group">
-          <input type="text" class="form-control" id="name" placeholder="Nom du projet..." formControlName="name" required >
+          <input type="text" class="form-control" id="name" placeholder="{{'label.project-name' | translate }}" formControlName="name" required >
           <div *ngIf="forms.get('name')?.invalid && (forms.get('name')?.dirty || forms.get('name')?.touched)"
                class="error">
             <div *ngIf="forms.get('name')?.errors?.['required']">
-              Un nom de projet est requis.
+              {{'error.project-name' | translate }}
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <textarea class="text-area" id="description" placeholder="Description..." formControlName="description" rows="4" cols="50" required ></textarea>
+          <textarea class="text-area" id="description" placeholder="{{'label.project-description' | translate }}" formControlName="description" rows="4" cols="50" required ></textarea>
           <div *ngIf="forms.get('description')?.invalid && (forms.get('description')?.dirty || forms.get('description')?.touched)"
                class="error text-area-error">
             <div *ngIf="forms.get('description')?.errors?.['required']">
-              Une description du projet est requise.
+              {{'error.project-description' | translate }}
             </div>
           </div>
         </div>
 
         <div class="radio-wrapper">
-          <label>Visibilité du projet</label>
+          <label> {{ 'label.project-visibility' | translate }} </label>
           <div class="radio-container">
             <div>
               <input type="radio" class="radio-element" id="true" [value]="true" formControlName="isProjectPublic">
-              <label for="true">Public</label><br>
+              <label for="true">{{ 'label.project-visibility-public' | translate }}</label><br>
             </div>
             <div>
               <input type="radio" class="radio-element" id="false" [value]="false" formControlName="isProjectPublic">
-              <label for="false">Privé</label><br>
+              <label for="false">{{ 'label.project-visibility-private' | translate }}</label><br>
             </div>
             <div *ngIf="forms.get('isProjectPublic')?.invalid && (forms.get('isProjectPublic')?.dirty || forms.get('isProjectPublic')?.touched)"
                  class="error">
               <div *ngIf="forms.get('isProjectPublic')?.errors?.['required']">
-                Définissez si votre projet est public ou privé.
+                {{ 'error.project-visibility' | translate}}
               </div>
             </div>
           </div>
         </div>
       </form>
       <div class="button-container">
-        <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
-        <app-validation-button *ngIf="this.forms.valid" label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
-        <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" (click)="cancel()"></app-little-button>
+        <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label=" {{ 'button.save' | translate  }}" (click)="onSubmit()"></app-validation-button>
+        <app-validation-button *ngIf="this.forms.valid" label=" {{ 'button.save' | translate  }}" (click)="onSubmit()"></app-validation-button>
+        <app-little-button label="{{ 'button.cancel' | translate  }}" radius="60px" color="red" textColor="white" (click)="cancel()"></app-little-button>
       </div>
     </div>
   </div>

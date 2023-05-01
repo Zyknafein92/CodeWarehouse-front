@@ -6,12 +6,11 @@
     </div>
     <div class="first-content-right">
       <div class="first-content-title">
-        <h2>CODEWHAREHOUSE, QU'EST-CE QUE C'EST ?</h2>
+        <h2>{{ 'page.home.item.what-is-it.title' | translate }}</h2>
       </div>
       <div class="first-content-texte">
-        <p> Découvrez une solution simple et efficasse pour partager votre code en ligne.</p>
-        <p>Que vous soyez élève ou enseignant, nous vous aidons à partager vos créations
-          tout en vous permettant d'échanger avec les autres.</p>
+        <p> {{ 'page.home.item.what-is-it.text1' | translate }}</p>
+        <p> {{ 'page.home.item.what-is-it.text2' | translate }}</p>
       </div>
     </div>
   </div>
@@ -19,10 +18,10 @@
   <div class="second-content">
     <div class="cards">
       <div class="card-title">
-        <h2> FACILE & RAPIDE </h2>
+        <h2> {{ 'page.home.item.easy-and-fast.title' | translate }}</h2>
       </div>
       <div class="card-text">
-        <p>Partagez en quelques clics sur notre code éditeur en quelques secondes ! Aussi simple que de copier/coller !</p>
+        <p>{{ 'page.home.item.easy-and-fast.text' | translate }}</p>
       </div>
       <div class="card-image-container">
         <img  id="speedometer-img" src="assets/img/gauge-high-solid.svg" alt="Compteur indiquant une vitesse rapide">
@@ -31,11 +30,10 @@
 
     <div class="cards">
       <div class="card-title">
-        <h2> GERER VOTRE ESPACE </h2>
+        <h2> {{ 'page.home.item.space.title' | translate }} </h2>
       </div>
       <div class="card-text">
-        <p>Déciderez vous même si vous souhaitez que votre code soit visible par les autres
-          et/ou si ils pourront le modifier.</p>
+        <p>{{ 'page.home.item.space.text' | translate }}</p>
       </div>
       <div class="card-image-container">
         <img id="lock-img" src="assets/img/lock-solid.svg" alt="Compteur indiquant une vitesse rapide">
@@ -43,12 +41,10 @@
     </div>
     <div class="cards">
       <div class="card-title">
-        <h2> EXPLOREZ </h2>
+        <h2> {{ 'page.home.item.visit.title' | translate }} </h2>
       </div>
       <div class="card-text">
-        <p>Découvrez et échangez avec les autres.
-          Notre solution est parfaite pour partager
-          du code en ligne avec des élèves.</p>
+        <p>{{ 'page.home.item.visit.text' | translate }}</p>
       </div>
       <div class="card-image-container">
         <img id="screen-img" src="assets/img/display-solid.svg" alt="Compteur indiquant une vitesse rapide">
@@ -57,7 +53,7 @@
   </div>
 
     <div class="button-container">
-      <app-little-button label="{{ 'découvrir les projets' | uppercase }}" radius="60px" (click)="moveToSearchPage()"></app-little-button>
-      <app-validation-button  *ngIf="this.tokenEmail == '' || this.tokenEmail == null" label="{{ 'S\'INSCRIRE' | uppercase }}" (click)="moveToSignInPage()"></app-validation-button>
+      <app-little-button label="{{ 'button.discover' | translate | uppercase }}" radius="60px" (click)="moveToSearchPage()"></app-little-button>
+      <app-validation-button  *ngIf="this.tokenEmail == '' || this.tokenEmail == null" label="{{ 'button.signUp' | translate  }}" (click)="moveToSignInPage()"></app-validation-button>
     </div>
 </div>

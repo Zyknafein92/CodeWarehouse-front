@@ -1,16 +1,25 @@
 <div class="content-wrapper">
   <div class="content-container">
-    <h2 class="title">Créer une page</h2>
+    <h2 class="title" *ngIf="this.codePageUuid == null || this.codePageUuid == ''">{{ 'page.pageEdit.title-add' | translate }}</h2>
+    <h2 class="title" *ngIf="this.codePageUuid">{{ 'page.pageEdit.title-edit' | translate }}</h2>
     <div class="form-container">
       <form [formGroup]="forms">
 
         <div class="form-group">
-          <input type="text" class="form-control" id="name" placeholder="Nom de la page..." formControlName="name" required >
+          <input type="text"
+                 class="form-control"
+                 id="name"
+                 placeholder="{{ 'label.page-name' | translate }}"
+                 formControlName="name"
+                 required >
         </div>
 
         <div class="form-group">
-          <select label="Langage" formControlName="language" id="language-selector" required>
-            <option value="">-- Choisir un langage --</option>
+          <select label="Langage"
+                  formControlName="language"
+                  id="language-selector"
+                  required>
+            <option value="">{{ 'label.language' | translate }}</option>
             <option value="javascript">JS / TS</option>
             <option value="text/x-java">Java</option>
             <option value="htmlmixed">HTML</option>
@@ -22,7 +31,7 @@
         <div class="form-group">
           <textarea class="text-area"
                     id="code"
-                    placeholder="Code..."
+                    placeholder="{{ 'label.code' | translate }}"
                     formControlName="codeTextContent"
                     rows="4"
                     cols="50"
@@ -32,7 +41,7 @@
         <div class="form-group">
           <textarea class="text-area"
                     id="commentary"
-                    placeholder="Commentaires ou notes sur le code..."
+                    placeholder="{{ 'label.commentary' | translate }}"
                     formControlName="codeCommentary"
                     rows="4"
                     cols="50"
@@ -42,8 +51,9 @@
     </div>
 
     <div class="button-container">
-      <app-validation-button label=" {{ 'sauvegarder' | uppercase}}" (click)="onSubmit()"></app-validation-button>
-      <app-little-button label=" {{ 'annuler' | uppercase }}" radius="60px" color="red" textColor="white" (click)="cancel()"></app-little-button>
+      <app-validation-button *ngIf="this.forms.invalid" [disabled]="this.forms.invalid" label="{{ 'button.save' | translate  }}" (click)="onSubmit()"></app-validation-button>
+      <app-validation-button *ngIf="this.forms.valid"  label="{{ 'button.save' | translate  }}" (click)="onSubmit()"></app-validation-button>
+      <app-little-button label="{{ 'button.cancel' | translate  }}" radius="60px" color="red" textColor="white" (click)="cancel()" ></app-little-button>
     </div>
 
   </div>

@@ -14,13 +14,13 @@ export class PasswordRecoverComponent implements OnInit{
   forms!: FormGroup;
   user?: User;
   token: string | undefined;
+  successMessage: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(param => {
       this.token = param['token'];
-      console.log('token: ', this.token)
       this.initializeForm();
       this.initUser();
     });
@@ -53,8 +53,9 @@ export class PasswordRecoverComponent implements OnInit{
 
   onSubmit() {
     if(this.user) {
-      this.userService.updateUserPassword(this.user?.userUuid, this.forms.get('password')?.value).subscribe(next => {
-        this.router.navigate(['/login']);
+      this.userService.updateUserPassword(this.user?.userUuid, this.forms.get('password')?.value).subscribe(data => {
+          this.successMessage = true;
+          setTimeout(() => this.router.navigate(['/login']), 2000);
       });
     }
   }

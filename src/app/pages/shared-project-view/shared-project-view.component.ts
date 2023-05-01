@@ -77,13 +77,12 @@ export class SharedProjectViewComponent implements OnInit {
     if (!this.isUserOwner) {
       this.isReadOnly = !this.codePage.isEditable;
     }
-    console.log(this.isReadOnly);
   }
 
   private initializeForm(): void {
     this.forms = this.formBuilder.group(
       {
-        isEditable:[true],
+        isEditable:[false],
         codeCommentary: ['', Validators.required],
       }
     )
@@ -121,7 +120,6 @@ export class SharedProjectViewComponent implements OnInit {
   }
 
   editContent() {
-    console.log('trigger');
     window.clearTimeout(this._save);
     this._save = null;
     this.changedCode = true;
@@ -131,7 +129,6 @@ export class SharedProjectViewComponent implements OnInit {
   }
 
   saveCode() : void {
-    console.log(this.codePage);
     this.codePageService.updateCodePage(this.codePage.codePageUuid, this.codePage).subscribe( res => {
       this.changedCode = false;
       this.codePage = res;

@@ -30,7 +30,7 @@ export class UserService {
     const params = new HttpParams()
       .set('email', password);
     console.log(params)
-    return this.http.post<void>(`${this.URL}/forgetPassword`, params);
+    return this.http.post<void>(`${this.URL}/forget-password`, params);
   }
 
   updateUser(uuid: string, user: User): Observable<User> {

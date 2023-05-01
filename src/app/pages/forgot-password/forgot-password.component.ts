@@ -25,8 +25,8 @@ export class ForgotPasswordComponent implements OnInit{
 
   onSubmit() {
     this.userService.forgetPassword(this.forms.get('email')?.value).subscribe( next => {
-      this.router.navigate(['/']);
-    })
+    });
+    this.router.navigate(['/']);
   }
 
   cancel() {

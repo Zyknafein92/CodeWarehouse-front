@@ -1,0 +1,100 @@
+{
+  "page": {
+    "create-account": {
+      "title": "Créer mon compte"
+    },
+    "forgot-password": {
+      "title": "Mot de passe oublié ?",
+      "text": {
+        "text1": "Vous avez oublié votre mot de passe ? Renseignez votre adresse email ci-dessous.",
+        "text2": "Si votre adresse correspond à une adresse connue, nous vous enverrons un email.",
+        "text3": "Vous serez automatiquement redirigé à la page d'accueil une fois le formulaire validé."
+      }
+    },
+    "home": {
+      "item": {
+        "what-is-it": {
+          "title": "CODEWHAREHOUSE, QU'EST-CE QUE C'EST ?",
+          "text1": "Découvrez une solution simple et efficace pour partager votre code en ligne.",
+          "text2": "Que vous soyez élève ou enseignant, nous vous aidons à partager vos créations tout en vous permettant d'échanger avec les autres."
+        },
+        "easy-and-fast": {
+          "title": "FACILE & RAPIDE",
+          "text": "Partagez en quelques clics sur notre code éditeur en quelques secondes ! Aussi simple que de copier/coller !"
+        },
+        "space": {
+          "title": "GERER VOTRE ESPACE",
+          "text": "Déciderez vous même si vous souhaitez que votre code soit visible par les autres et/ou si ils pourront le modifier."
+        },
+        "visit": {
+          "title": "EXPLOREZ",
+          "text": "Découvrez et échangez avec les autres.Notre solution est parfaite pour partager du code en ligne avec des élèves."
+        }
+      }
+    },
+    "pageEdit": {
+      "title-add": "Créer une page",
+      "title-edit": "Modifier une page"
+    },
+    "password-recover": {
+      "title": "Mot de passe perdu",
+      "text": "Veuillez définir votre nouveau mot de passe :"
+    },
+    "projectEdit": {
+      "title-add": "Créer un projet",
+      "title-edit": "Modifier un projet"
+    },
+    "update-account": {
+      "title":"Mettre à jour mes informations de compte"
+    }
+  },
+  "button": {
+    "discover": "Découvrir les projets",
+    "cancel": "ANNULER",
+    "signUp": "S'INSCRIRE",
+    "save": "SAUVEGARDER",
+    "login": "SE CONNECTER",
+    "editorView": "vue éditeur",
+    "addPage": "Créer une page",
+    "addProject": "Créer un projet",
+    "project": "PROJET",
+    "commentary": "COMMENTAIRES"
+  },
+  "link": {
+    "subscribe": "Nouveau ? Inscrivez-vous",
+    "forgot-password": "Mot de passe oublié",
+    "home": "Retour à la page d'accueil"
+  },
+  "error": {
+    "email-required": "Un email est requis.",
+    "password-required": "Un mot de passe est requis",
+    "password-mismatch": "Les mot de passes ne correspondent pas",
+    "password-size" : " Votre mot de passe doit faire entre 8 et 16 caractères.",
+    "token-invalid": "Une erreur s'est produite. Le token a expiré ou il est invalide",
+    "project-name": "Un nom de projet est requis",
+    "project-description": "Une description du projet est requise",
+    "project-visibility": "Définissez si votre projet est public ou privé."
+  },
+  "success": {
+    "account-created": "Votre compte a été créé, nous allons vous rediriger dans quelques quelques secondes !",
+    "password-recover": "Votre mot de passe a bien été modifié, vous allez être redirigé dans un instant."
+  },
+  "label": {
+    "email": "Email...",
+    "password": "Mot de passe...",
+    "password-again": "Indiquez à nouveau votre mot de passe...",
+    "page-name": "Nom de la page...",
+    "language": "-- Choisir un langage --",
+    "code": "Copiez votre code içi, ou annotez simplement quelque chose. Vous pourrez le modifier sur l'éditeur en cliquant sur Vue Editeur après la création",
+    "commentary": "Commentaires ou notes sur le code...",
+    "project-management": "Gérer mes projets",
+    "project-name": "Nom du projet...",
+    "project-description": "Une rapide description du projet...",
+    "project-visibility": "Visibilité du projet",
+    "project-visibility-public": "Public",
+    "project-visibility-private": "Privé",
+    "modificationAuthorized": "Autoriser la modification",
+    "account-management": "Modifier mes informations de compte",
+    "account-delete": "Supprimer mon compte"
+  }
+}

@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./pages-view.component.css']
 })
 export class PagesViewComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['Nom de la page', 'Modifier', 'Supprimer'];
+  displayedColumns: string[] = ['Nom', 'Modifier', 'Supprimer'];
   data: CodePage[] = [];
   projectUuid: string = '';
 
@@ -52,23 +52,17 @@ export class PagesViewComponent implements OnInit, AfterViewInit {
           ).pipe(catchError(() => of(null)));
         }),
         map(data => {
-          // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
-
           if (data === null) {
             return [];
           }
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
           this.resultsLength = data.length;
           return data;
         }),
       )
       .subscribe(data => {
         (this.data = data);
-        console.log(data);
       });
   }
 
@@ -92,7 +86,7 @@ export class PagesViewComponent implements OnInit, AfterViewInit {
         this.paginator._changePageSize(this.paginator.pageSize);
       },
       error => {
-        console.log(error.error.message)
+        console.log(error.error.message) //todo: toast ?
       });
   }
 }

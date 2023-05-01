@@ -16,16 +16,21 @@
       <div class="left-side-options-container">
         <div class="checkbox-container" *ngIf="this.isUserOwner">
           <form [formGroup]="forms">
-            <input type="checkbox" id="isEditable" name="isEditable" value="isEditable" formControlName="isEditable" (click)="switchCodePageModificationStatusMode()">
-            <label for="isEditable"><span>Autoriser la modification</span></label>
+            <input type="checkbox"
+                   id="isEditable"
+                   name="isEditable"
+                   value="isEditable"
+                   formControlName="isEditable"
+                   (click)="switchCodePageModificationStatusMode()">
+            <label for="isEditable"><span>{{'label.modificationAuthorized' | translate}}</span></label>
           </form>
         </div>
 
         <div class="button-container">
-          <app-little-button label="Projet" radius="60px" (click)="switchDisplayModeToProject()"></app-little-button>
+          <app-little-button label="{{ 'button.project' | translate }}" radius="60px" (click)="switchDisplayModeToProject()"></app-little-button>
         </div>
         <div class="button-container">
-          <app-little-button label="Notes" radius="60px" (click)="switchDisplayModeToCommentary()"></app-little-button>
+          <app-little-button label="{{ 'button.commentary' | translate }}" radius="60px" (click)="switchDisplayModeToCommentary()"></app-little-button>
         </div>
       </div>
 
@@ -34,13 +39,13 @@
           <form [formGroup]="forms" >
           <textarea autosize class="text-area-content"
                     id="code"
-                    placeholder="Code..."
+                    placeholder="{{ 'label.commentary' | translate}}"
                     formControlName="codeCommentary"
                     rows="15"
                     [readOnly]="this.isReadOnly"
                     required ></textarea>
             <div class="validation-button-container">
-              <app-validation-button *ngIf="!this.isReadOnly" label=" {{ 'sauvegarder' | uppercase}}" (click)="saveCodeCommentary()"></app-validation-button>
+              <app-validation-button *ngIf="!this.isReadOnly" label=" {{ 'button.save' | translate }}" (click)="saveCodeCommentary()"></app-validation-button>
             </div>
           </form>
         </div>

@@ -34,8 +34,8 @@ import {AutosizeModule} from "ngx-autosize";
 import {CookieService} from 'ngx-cookie-service';
 import {httpInterceptorProviders} from "../services/Security/auth-interceptor.service";
 import { PasswordRecoverComponent } from './pages/password-recover/password-recover.component';
-
-
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,8 +74,19 @@ import { PasswordRecoverComponent } from './pages/password-recover/password-reco
     MatInputModule,
     MatSelectModule,
     AutosizeModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [HttpClient, CookieService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
