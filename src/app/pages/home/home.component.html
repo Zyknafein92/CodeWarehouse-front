@@ -54,6 +54,6 @@
 
     <div class="button-container">
       <app-little-button label="{{ 'button.discover' | translate | uppercase }}" radius="60px" (click)="moveToSearchPage()"></app-little-button>
-      <app-validation-button  *ngIf="this.tokenEmail == '' || this.tokenEmail == null" label="{{ 'button.signUp' | translate  }}" (click)="moveToSignInPage()"></app-validation-button>
+      <app-validation-button  *ngIf="!this.tokenEmail" label="{{ 'button.signUp' | translate  }}" (click)="moveToSignInPage()"></app-validation-button>
     </div>
 </div>

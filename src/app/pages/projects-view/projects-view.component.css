@@ -32,6 +32,8 @@
   height: 25px;
 }
 
+
+/* Material Table */
 table {
   width: 100%;
   color: white;
@@ -76,3 +78,4 @@ table {
 ::ng-deep .mat-mdc-icon-button svg  {
   color: white !important;
 }
+

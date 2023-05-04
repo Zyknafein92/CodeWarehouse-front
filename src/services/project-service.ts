@@ -17,15 +17,17 @@ export class ProjectService {
     return this.http.get<Project>(`${this.URL}/${uuid}`);
   }
 
-  getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${this.URL}`);
+  getAllProjects(pageNumber: number, pageSize: number): Observable<Project[]> {
+    const params: HttpParams = new HttpParams();
+    params.set('page', pageNumber);
+    params.set('size', pageSize);
+    return this.http.get<Project[]>(`${this.URL}`, { params });
   }
 
-  getAllProjectOfUser(pageNumber: number, pageSize: number, sort: any): Observable<Project[]> {
+  getAllProjectOfUser(pageNumber: number, pageSize: number): Observable<Project[]> {
     const params: HttpParams = new HttpParams();
-    params.set('pageNumber', pageNumber);
-    params.set('pageSize', pageSize);
-    params.set('sort', sort);
+    params.set('page', pageNumber);
+    params.set('size', pageSize);
     return this.http.get<Project[]>(`${this.URL + '/user'}`, { params });
   }
   addProject(project: Project): Observable<Project> {
@@ -34,10 +36,6 @@ export class ProjectService {
 
   updateProject(uuid: string, project: Project): Observable<Project> {
     return this.http.put<Project>(`${this.URL}/${uuid}`, project);
-  }
-
-  updateProjectVisibilityStatus(uuid: string, status: boolean): Observable<Boolean> {
-    return this.http.put<boolean>(`${this.URL}/${uuid}`, status);
   }
 
   deleteProject(uuid: string): Observable<void> {

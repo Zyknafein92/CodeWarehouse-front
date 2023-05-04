@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit{
   constructor(private router: Router, private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
-    this.tokenStorageService.watchTokenStorage().subscribe(val => {
+    this.tokenStorageService.cookie$.subscribe(val => {
       this.tokenEmail = val;
-    })
+    });
   }
   moveToSignInPage() {
     this.router.navigate(['/user/create']);
@@ -24,5 +24,6 @@ export class HomeComponent implements OnInit{
   moveToSearchPage() {
     this.router.navigate(['/project/search']);
   }
+
 
 }

@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
 import {Project} from "../../../models/Project";
 import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 import {ProjectService} from "../../../services/project-service";
 import {Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-projects-view',
@@ -13,43 +13,47 @@ import {Router} from "@angular/router";
 })
 export class ProjectsViewComponent implements AfterViewInit {
   displayedColumns: string[] = ['Nom du projet', 'Visibilité du projet', 'Modifier', 'Supprimer'];
-  data: Project[] = [];
+  dataSource: MatTableDataSource<Project> = new MatTableDataSource<Project>();
 
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private projectService: ProjectService,
               private router: Router) {
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-    merge(this.sort.sortChange, this.paginator.page)
+    this.dataSource.paginator = this.paginator;
+    merge(this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
           return this.projectService.getAllProjectOfUser(
-            30,
+            this.paginator.pageSize,
             this.paginator.pageIndex,
-            this.sort,
           ).pipe(catchError(() => of(null)));
         }),
-        map(data => {
+        map(dataSource => {
           this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
-          if (data === null) {
+          this.isRateLimitReached = dataSource === null;
+          if (dataSource === null) {
             return [];
           }
-          this.resultsLength = data.length;
-          return data;
+          this.resultsLength = dataSource.length;
+          return dataSource;
         }),
       )
-      .subscribe(data => (this.data = data));
+      .subscribe(data => {
+        if (data === null) {
+          return [];
+        }
+        this.dataSource.data = data;
+        return this.dataSource;
+      });
   }
 
   moveToAddProject() {
@@ -67,8 +71,6 @@ export class ProjectsViewComponent implements AfterViewInit {
   deleteProject(uuid: string) {
     this.projectService.deleteProject(uuid).subscribe(
       next  => {
-        let item = this.data.find(item => item.projectUuid === uuid);
-        this.data.splice(this.data.indexOf(item!));
         //trigger for render table again without delete value
         this.paginator._changePageSize(this.paginator.pageSize);
       },

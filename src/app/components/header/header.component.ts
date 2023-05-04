@@ -1,7 +1,6 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../../services/Security/token-storage.service";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -9,16 +8,15 @@ import {Subscription} from "rxjs";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  tokenEmail: string | undefined;
+  tokenEmail?: string;
 
   constructor(private router: Router, private tokenStorageService: TokenStorageService, ) {
   }
 
   ngOnInit(): void {
-  this.tokenStorageService.watchTokenStorage().subscribe(val => {
-      this.tokenEmail = val;
-      console.log('token email on init', this.tokenEmail)
-    });
+  this.tokenStorageService.cookie$.subscribe(val => {
+    this.tokenEmail = val;
+  });
   }
   moveToHomePage() {
     this.router.navigate(['/home']);

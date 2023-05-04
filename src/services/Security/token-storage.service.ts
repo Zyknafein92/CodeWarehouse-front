@@ -1,18 +1,20 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TokenStorageService {
-  private cookie$: BehaviorSubject<string> = new BehaviorSubject(this.getEmail());
+  private cookieSubject$: BehaviorSubject<string> = new BehaviorSubject(this.getEmail());
+  public cookie$ = this.cookieSubject$.asObservable();
 
   constructor(private cookieService: CookieService) {}
 
   signOut(): void {
     this.cookieService.deleteAll();
+    this.cookieSubject$.next('');
   }
 
   public saveToken(token: string | undefined): void {
@@ -28,7 +30,7 @@ export class TokenStorageService {
   public saveEmail(email: string | undefined): void {
     if (email) {
       this.cookieService.set('token-email', email);
-      this.cookie$.next(email);
+      this.cookieSubject$.next(email);
     }
   }
 
@@ -38,9 +40,5 @@ export class TokenStorageService {
 
   public saveAuthorities(authorities: string[]): void {
     this.cookieService.set('token-authority', JSON.stringify(authorities));
-  }
-
-  watchTokenStorage() : Observable<string> {
-    return this.cookie$.asObservable();
   }
 }

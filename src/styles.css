@@ -2,6 +2,7 @@
 @import 'codemirror/lib/codemirror.css';
 @import 'codemirror/theme/base16-dark.css';
 
+/* Fonts */
 @font-face {
   font-family: "Zen";
   src: url(./assets/fonts/ZenDots-Regular.ttf) format("truetype");
@@ -22,6 +23,7 @@ p, span, h1, h2 {
   color: white;
 }
 
+/* Link A*/
 .link {
   color: #2399DB;
   text-decoration: underline;
@@ -59,8 +61,14 @@ p, span, h1, h2 {
   color: red;
   border-color: red;
 }
-
+/* Code Mirror */
 .CodeMirror {
   height: 100%;
   max-height: 1920px;
+}
+
+/* Material - Paginator */
+.mat-mdc-option.mdc-list-item {
+  border: 1px solid white;
+  border-radius: 20px;
 }

@@ -17,11 +17,10 @@ export class CodePageService {
     return this.http.get<CodePage>(`${this.URL}/${uuid}`);
   }
 
-  getAllProjectPages(uuid: string, pageNumber: number, pageSize: number, sort: any): Observable<CodePage[]> {
+  getAllProjectPages(uuid: string, pageNumber: number, pageSize: number): Observable<CodePage[]> {
     const params: HttpParams = new HttpParams();
     params.set('pageNumber', pageNumber);
     params.set('pageSize', pageSize);
-    params.set('sort', sort);
     return this.http.post<CodePage[]>(`http://localhost:8080/api/project/${uuid}/pages`, { params } );
   }
 

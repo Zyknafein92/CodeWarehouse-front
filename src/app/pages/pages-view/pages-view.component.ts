@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
 import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
 import {CodePageService} from "../../../services/code-page-service";
 import {CodePage} from "../../../models/CodePage";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-pages-view',
@@ -12,17 +12,14 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./pages-view.component.css']
 })
 export class PagesViewComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['Nom', 'Modifier', 'Supprimer'];
-  data: CodePage[] = [];
-  projectUuid: string = '';
 
+  displayedColumns: string[] = ['Nom', 'Modifier', 'Supprimer'];
+  dataSource: MatTableDataSource<CodePage> = new MatTableDataSource<CodePage>();
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
-
+  projectUuid: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
 
   constructor(private codePageService: CodePageService,
               private activatedRoute: ActivatedRoute,
@@ -37,32 +34,34 @@ export class PagesViewComponent implements OnInit, AfterViewInit {
     }
 
   ngAfterViewInit() {
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-    merge(this.sort.sortChange, this.paginator.page)
+    this.dataSource.paginator = this.paginator;
+    merge(this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
           return this.codePageService.getAllProjectPages(
             this.projectUuid,
-            20,
+            this.paginator.pageSize,
             this.paginator.pageIndex,
-            this.sort,
           ).pipe(catchError(() => of(null)));
         }),
-        map(data => {
+        map(dataSource => {
           this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
-          if (data === null) {
+          this.isRateLimitReached = dataSource === null;
+          if (dataSource === null) {
             return [];
           }
-          this.resultsLength = data.length;
-          return data;
+          this.resultsLength = dataSource.length;
+          return dataSource;
         }),
       )
       .subscribe(data => {
-        (this.data = data);
+        if (data === null) {
+          return [];
+        }
+        this.dataSource.data = data;
+        return this.dataSource;
       });
   }
 
@@ -80,9 +79,6 @@ export class PagesViewComponent implements OnInit, AfterViewInit {
   deletePage(uuid: string) {
     this.codePageService.deleteCodePage(uuid).subscribe(
       next  => {
-        let item = this.data.find(item => item.codePageUuid === uuid);
-        this.data.splice(this.data.indexOf(item!));
-        //trigger for render table again without delete value
         this.paginator._changePageSize(this.paginator.pageSize);
       },
       error => {
