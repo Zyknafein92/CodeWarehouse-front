@@ -53,7 +53,7 @@ export class PageEditComponent implements OnInit{
         projectUuid: this.projectUuid,
         name: ['', Validators.required],
         language: ['', Validators.required],
-        isLocked : [true],
+        isEditable : [true],
         codeTextContent: ['', Validators.required],
         codeCommentary: ['Aucun commentaire n\'a été saisi pour le moment.', Validators.required],
       }
@@ -67,7 +67,7 @@ export class PageEditComponent implements OnInit{
         projectUuid: data.projectUuid,
         name: data.name,
         language: data.language,
-        isLocked : data.isEditable,
+        isEditable : data.isEditable,
         codeCommentary: data.codeCommentary,
         codeTextContent: data.codeTextContent
       })
