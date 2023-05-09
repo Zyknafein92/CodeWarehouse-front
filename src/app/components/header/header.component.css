@@ -29,7 +29,6 @@
   -webkit-text-stroke: 1px black;
 }
 
-
 /* Content de droite */
 .image {
   margin: 0 20px;
@@ -38,8 +37,6 @@
 .image:hover {
   cursor:pointer;
 }
-
-
 
 /* Images */
 #header-factory-img {
@@ -60,4 +57,80 @@
 #header-logout-img {
   width: 40px;
   height: 40px;
+}
+
+/** Vue Mobile  **/
+@media screen and (max-width: 480px) {
+
+  .header-wrapper {
+    justify-content: space-around;
+  }
+
+  .header-title {
+    font-size: 8px;
+    margin-left: 10px;
+  }
+  .header-img-container {
+    display: none;
+  }
+
+  .image {
+    margin: 0 10px;
+  }
+
+  #header-user-img {
+    width: 17px !important;
+    height: 20px !important;
+  }
+
+  #header-login-img {
+    width: 20px !important;
+    height: 17px !important;
+  }
+
+  #header-logout-img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .header-wrapper {
+    justify-content: space-around;
+  }
+
+  .header-title {
+    font-size: 12px;
+  }
+
+  #header-user-img {
+    width: 17px !important;
+    height: 20px !important;
+  }
+
+  #header-login-img {
+    width: 20px !important;
+    height: 17px !important;
+  }
+
+  #header-logout-img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  #header-factory-img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  .header-wrapper {
+    justify-content: space-around;
+  }
+
+  .header-title {
+    font-size: 16px;
+  }
 }
