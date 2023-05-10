@@ -2,7 +2,7 @@
 .content-wrapper {
   width: 90%;
   height: 100%;
-  margin: 0 auto 1vh auto;
+  margin: 40vh auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

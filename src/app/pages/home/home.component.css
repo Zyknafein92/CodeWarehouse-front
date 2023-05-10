@@ -1,10 +1,9 @@
 .content-wrapper {
   width: 90%;
   height: 100%;
+  margin: 2vh auto;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  justify-content: center;
 }
 
 .first-content {
@@ -99,9 +98,14 @@
 
 @media screen and (max-width: 768px) {
 
+  .content-wrapper {
+    margin: 2vh auto;
+  }
+
   h2 {
     font-size: 18px !important;
   }
+
   .first-content {
     width: 90%;
     flex-direction: column-reverse;
@@ -132,3 +136,36 @@
     height: 60px;
   }
 }
+
+@media screen and (max-width: 425px) {
+
+  .content-wrapper {
+    margin: 2vh auto;
+  }
+
+  h2 {
+    font-size: 14px !important;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 4vh;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+
+  .content-wrapper {
+    width: 60%;
+  }
+
+  .second-content {
+    margin: 8em auto;
+  }
+}
+

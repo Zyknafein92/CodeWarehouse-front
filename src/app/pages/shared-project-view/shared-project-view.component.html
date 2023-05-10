@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <div class="content-container">
     <div class="content-right-side">
-      <ngx-codemirror *ngIf="this.codePage"
+      <ngx-codemirror #CodeMirror *ngIf="this.codePage"
                       [(ngModel)]="this.codePage.codeTextContent"
                       (ngModelChange)="editContent()"
                       [options]=
@@ -9,53 +9,107 @@
                           theme: 'base16-dark',
                           mode: this.codePage.language,
                           readOnly: this.isReadOnly,
+                          viewportMargin: Infinity,
                         }">
       </ngx-codemirror>
     </div>
     <div class="content-left-side">
-      <div class="left-side-options-container">
-        <div class="checkbox-container" *ngIf="this.isUserOwner">
-          <form [formGroup]="forms">
-            <input type="checkbox"
-                   id="isEditable"
-                   name="isEditable"
-                   value="isEditable"
-                   formControlName="isEditable"
-                   (click)="switchCodePageModificationStatusMode()">
-            <label for="isEditable"><span>{{'label.modificationAuthorized' | translate}}</span></label>
-          </form>
-        </div>
+      <ng-container *ngIf="this.contentStatusIsMobile">
+        <div class="left-side-options-container">
+          <div class="checkbox-container" *ngIf="this.isUserOwner">
+            <form [formGroup]="forms">
+              <input type="checkbox"
 
-        <div class="button-container">
-          <app-little-button label="{{ 'button.project' | translate }}" radius="60px" (click)="switchDisplayModeToProject()"></app-little-button>
-        </div>
-        <div class="button-container">
-          <app-little-button label="{{ 'button.commentary' | translate }}" radius="60px" (click)="switchDisplayModeToCommentary()"></app-little-button>
-        </div>
-      </div>
+                     name="isEditable"
+                     value="isEditable"
+                     formControlName="isEditable"
+                     (click)="switchCodePageModificationStatusMode()">
+              <label for="isEditable"><span class="checkboxLabel">{{'label.modificationAuthorized' | translate}}</span></label>
+            </form>
+          </div>
 
-      <ng-container *ngIf="isNotesViewActive && this.codePage">
-        <div class="display-content-container-text-area" *ngIf="this.codePage.codeCommentary != '' ">
-          <form [formGroup]="forms" >
-          <textarea autosize class="text-area-content"
-                    id="code"
-                    placeholder="{{ 'label.commentary' | translate}}"
-                    formControlName="codeCommentary"
-                    rows="15"
-                    [readOnly]="this.isReadOnly"
-                    required ></textarea>
-            <div class="validation-button-container">
-              <app-validation-button *ngIf="!this.isReadOnly" label=" {{ 'button.save' | translate }}" (click)="saveCodeCommentary()"></app-validation-button>
-            </div>
-          </form>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="isProjectViewActive">
-        <div class="display-content-container">
-          <div class="page-list-container"  *ngFor="let page of this.project.codePageList">
-            <p class="link" (click)="displayNewCodePage(page.codePageUuid)">{{page.name}}</p>
+          <div class="button-container">
+            <img class="img-button" src="assets/img/eye-regular.svg" alt="Logo d'un eye" (click)="displaySideBarContent()">
+          </div>
+          <div class="button-container">
+            <img class="img-button" src="assets/img/diagram-project-solid.svg" alt="Logo d'un projet" (click)="switchDisplayModeToProject()"
+            >
+          </div>
+          <div class="button-container">
+            <img class="img-button" src="assets/img/message-solid.svg" (click)="switchDisplayModeToCommentary()" alt="Logo d'un carnet"
+            >
           </div>
         </div>
+        <ng-container *ngIf="isNotesViewActive && this.codePage && this.mobileViewContentIsDisplay">
+          <div class="display-content-container-text-area" *ngIf="this.codePage.codeCommentary != '' ">
+            <form [formGroup]="forms">
+              <textarea autosize class="text-area-content"
+                        placeholder="{{ 'label.commentary' | translate}}"
+                        formControlName="codeCommentary"
+                        rows="15"
+                        [readOnly]="this.isReadOnly"
+                        required >
+              </textarea>
+              <div class="validation-button-container">
+                <app-validation-button *ngIf="!this.isReadOnly" label=" {{ 'button.save' | translate }}" (click)="saveCodeCommentary()"></app-validation-button>
+              </div>
+            </form>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isProjectViewActive && this.mobileViewContentIsDisplay">
+          <div class="display-content-container">
+            <div class="page-list-container"  *ngFor="let page of this.project.codePageList">
+              <p class="link" (click)="displayNewCodePage(page.codePageUuid)">{{page.name}}</p>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!this.contentStatusIsMobile">
+        <div class="left-side-options-container">
+          <div class="checkbox-container" *ngIf="this.isUserOwner">
+            <form [formGroup]="forms">
+              <input type="checkbox"
+                     id="isEditable"
+                     name="isEditable"
+                     value="isEditable"
+                     formControlName="isEditable"
+                     (click)="switchCodePageModificationStatusMode()">
+              <label for="isEditable"><span class="checkboxLabel">{{'label.modificationAuthorized' | translate}}</span></label>
+            </form>
+          </div>
+
+          <div class="button-container">
+            <app-little-button label="{{ 'button.project' | translate }}" radius="60px" (click)="switchDisplayModeToProject()"></app-little-button>
+          </div>
+          <div class="button-container">
+            <app-little-button label="{{ 'button.commentary' | translate }}" radius="60px" (click)="switchDisplayModeToCommentary()"></app-little-button>
+          </div>
+        </div>
+        <ng-container *ngIf="isNotesViewActive && this.codePage">
+          <div class="display-content-container-text-area" *ngIf="this.codePage.codeCommentary != '' ">
+            <form [formGroup]="forms" >
+              <textarea autosize class="text-area-content"
+                        id="code"
+                        placeholder="{{ 'label.commentary' | translate}}"
+                        formControlName="codeCommentary"
+                        rows="15"
+                        [readOnly]="this.isReadOnly"
+                        required >
+              </textarea>
+              <div class="validation-button-container">
+                <app-validation-button *ngIf="!this.isReadOnly" label=" {{ 'button.save' | translate }}" (click)="saveCodeCommentary()"></app-validation-button>
+              </div>
+            </form>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isProjectViewActive">
+          <div class="display-content-container">
+            <div class="page-list-container"  *ngFor="let page of this.project.codePageList">
+              <p class="link" (click)="displayNewCodePage(page.codePageUuid)">{{page.name}}</p>
+            </div>
+          </div>
+        </ng-container>
       </ng-container>
     </div>
   </div>

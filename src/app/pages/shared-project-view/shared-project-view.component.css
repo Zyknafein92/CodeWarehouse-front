@@ -3,21 +3,19 @@
 
 .content-wrapper {
   width: 90%;
-  margin: 0 auto 5% auto;
+  margin: 2vh auto;
   display: flex;
-  justify-content: center;
   font-family: Baloo, ui-serif;
 }
 
 .content-container {
   display: flex;
-  background-color: #d9d9d921;
   width: 100%;
+  height: 50%;
 }
 
 .content-right-side {
   width: 50%;
-  height: 100%;
   color: white;
 }
 
@@ -46,6 +44,10 @@
   border-radius: 20px;
   background-color: #d9d9d921;
   padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5vh;
 }
 
 .display-content-container-text-area {
@@ -64,9 +66,53 @@
   border: none;
 }
 
+.button-container {
+  display: flex;
+  text-align: center;
+  gap: 4vh;
+}
+
 .validation-button-container {
   display: flex;
   margin: 2rem auto;
   justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .button {
+    font-size: 12px !important;
+    margin: 2vh;
+  }
+
+  .content-container {
+    flex-direction: column-reverse;
+  }
+
+  .content-left-side {
+    width: 100%;
+  }
+
+  .content-right-side {
+    width: 100%;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 4vh;
+  }
+
+  .img-button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: white;
+  }
+
+  #checkboxLabel {
+    font-size: 12px;
+  }
 }
 

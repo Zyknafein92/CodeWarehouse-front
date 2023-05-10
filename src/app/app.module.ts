@@ -36,6 +36,7 @@ import {httpInterceptorProviders} from "../services/Security/auth-interceptor.se
 import { PasswordRecoverComponent } from './pages/password-recover/password-recover.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {NgOptimizedImage} from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,8 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgOptimizedImage
   ],
   providers: [HttpClient, CookieService, httpInterceptorProviders],
   bootstrap: [AppComponent]

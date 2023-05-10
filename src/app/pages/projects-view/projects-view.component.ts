@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {Project} from "../../../models/Project";
 import {catchError, map, merge, of, startWith, switchMap} from "rxjs";
@@ -11,7 +11,7 @@ import {MatTableDataSource} from "@angular/material/table";
   templateUrl: './projects-view.component.html',
   styleUrls: ['./projects-view.component.css']
 })
-export class ProjectsViewComponent implements AfterViewInit {
+export class ProjectsViewComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['Nom du projet', 'Visibilité du projet', 'Modifier', 'Supprimer'];
   dataSource: MatTableDataSource<Project> = new MatTableDataSource<Project>();
 
@@ -20,9 +20,14 @@ export class ProjectsViewComponent implements AfterViewInit {
   isRateLimitReached = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  isHidden = false;
 
   constructor(private projectService: ProjectService,
               private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.isHidden = window.outerWidth > 360;
   }
 
   ngAfterViewInit() {
@@ -79,4 +84,14 @@ export class ProjectsViewComponent implements AfterViewInit {
       });
 
   }
+  @HostListener('window:resize')
+  onResize() {
+    if(this.isHidden == window.outerWidth > 500) {
+      this.displayedColumns = ['Nom du projet', 'Visibilité du projet', 'Modifier', 'Supprimer'];
+    } else {
+      this.displayedColumns = ['Nom du projet', 'Modifier', 'Supprimer'];
+    }
+  }
+
+  protected readonly window = window;
 }

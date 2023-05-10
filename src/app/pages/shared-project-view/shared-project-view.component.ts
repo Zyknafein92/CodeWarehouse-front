@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CodePage} from "../../../models/CodePage";
 import {CodePageService} from "../../../services/code-page-service";
@@ -12,7 +12,7 @@ import {UserService} from "../../../services/user-service";
 @Component({
   selector: 'app-shared-project-view',
   templateUrl: './shared-project-view.component.html',
-  styleUrls: ['./shared-project-view.component.css']
+  styleUrls: ['./shared-project-view.component.css'],
 })
 export class SharedProjectViewComponent implements OnInit {
 
@@ -26,7 +26,9 @@ export class SharedProjectViewComponent implements OnInit {
   changedCode: boolean = false;
   isUserOwner: boolean = false;
   isReadOnly: boolean = true;
+  mobileViewContentIsDisplay: boolean = false;
   _save: any = null;
+  contentStatusIsMobile: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private codePageService: CodePageService,
@@ -43,6 +45,7 @@ export class SharedProjectViewComponent implements OnInit {
       });
     this.initializeForm();
     this.initData();
+    this.onResize();
   }
 
   switchDisplayModeToProject(): void {
@@ -157,4 +160,18 @@ export class SharedProjectViewComponent implements OnInit {
       this.checkifModificationAllowed();
     });
   }
+
+  displaySideBarContent(): boolean {
+    return this.mobileViewContentIsDisplay = !this.mobileViewContentIsDisplay;
+  }
+
+  @HostListener('window:resize')
+  onResize(): boolean {
+    this.contentStatusIsMobile = window.outerWidth < 1024
+    return this.contentStatusIsMobile;
+  }
+
+  protected readonly window = window;
+  protected readonly Infinity = Infinity;
 }
+

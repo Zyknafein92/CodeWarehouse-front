@@ -31,7 +31,7 @@ export class ProjectsSearchPageComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.projectService.getAllProjectOfUser(
+          return this.projectService.getAllProjects(
             this.paginator.pageSize,
             this.paginator.pageIndex,
           ).pipe(catchError(() => of(null)));

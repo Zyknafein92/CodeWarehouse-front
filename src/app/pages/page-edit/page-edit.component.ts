@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CodePageService} from "../../../services/code-page-service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-page-edit',
@@ -16,7 +17,8 @@ export class PageEditComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private codePageService: CodePageService) {
+              private codePageService: CodePageService,
+              private translateService: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -54,8 +56,8 @@ export class PageEditComponent implements OnInit{
         name: ['', Validators.required],
         language: ['', Validators.required],
         isEditable : [true],
-        codeTextContent: ['', Validators.required],
-        codeCommentary: ['Aucun commentaire n\'a été saisi pour le moment.', Validators.required],
+        codeTextContent: [this.translateService.instant('label.commentary'), Validators.required],
+        codeCommentary: [this.translateService.instant('label.code'), Validators.required],
       }
     )
   }

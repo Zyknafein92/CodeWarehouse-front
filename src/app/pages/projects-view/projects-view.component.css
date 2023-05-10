@@ -2,7 +2,7 @@
 .content-wrapper {
   width: 90%;
   height: 100%;
-  margin: 0 auto 1vh auto;
+  margin: 20vh auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,3 +79,23 @@ table {
   color: white !important;
 }
 
+@media screen and (max-width: 768px) {
+
+  table {
+    font-size: 10px;
+  }
+  .button {
+    font-size: 12px !important;
+    margin: 2vh;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 4vh;
+  }
+  .mdc-data-table__cell {
+    padding: 0 10px;
+  }
+}

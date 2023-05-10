@@ -11,3 +11,9 @@
 .account-button:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+  .account-button {
+    font-size: 12px !important;
+  }
+}

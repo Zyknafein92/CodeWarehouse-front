@@ -1,7 +1,7 @@
 .content-wrapper {
   width: 90%;
   height: 100%;
-  margin: 0 auto 5% auto;
+  margin: 2vh auto;
   display: flex;
   justify-content: center;
 }
@@ -67,3 +67,25 @@
   text-align: center;
 }
 
+@media screen and (max-width: 1000px) {
+  .content-container {
+    width: 80%;
+  }
+
+  .button {
+    font-size: 16px !important;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2vh;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .content-container {
+    width: 50%;
+  }
+}
