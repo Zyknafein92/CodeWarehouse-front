@@ -81,7 +81,8 @@
   },
   "success": {
     "account-created": "Votre compte a été créé, nous allons vous rediriger dans quelques quelques secondes.",
-    "password-recover": "Votre mot de passe a bien été modifié, vous allez être redirigé dans un instant."
+    "password-recover": "Votre mot de passe a bien été modifié, vous allez être redirigé dans un instant.",
+    "account-update": "Mise à jour faite, Veuillez vous reconnecter !"
   },
   "label": {
     "email": "Email...",

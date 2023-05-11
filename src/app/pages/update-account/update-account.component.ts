@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from 
 import {Router} from "@angular/router";
 import {UserService} from "../../../services/user-service";
 import {User} from "../../../models/User";
+import {TokenStorageService} from "../../../services/Security/token-storage.service";
 
 @Component({
   selector: 'app-update-account',
@@ -14,8 +15,9 @@ export class UpdateAccountComponent implements OnInit{
   forms!: FormGroup;
   errorMessage:string = '';
   user?: User;
+  successMessage: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService, private tokenService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -30,13 +32,18 @@ export class UpdateAccountComponent implements OnInit{
   onSubmit() {
     if(this.user)
       this.userService.updateUser(this.user?.userUuid, this.forms.value).subscribe({
-      complete: () => {},
+      complete: () => {
+        this.successMessage = true;
+      },
       error: (error) => {
         this.errorMessage = error.error.message;
         },
       next: () => {
-        this.router.navigate(['/']) },
-    });
+        setTimeout((): void => {
+          this.tokenService.signOut();
+          this.router.navigate(['/']);
+        }, 2000);
+    }});
   }
 
   onPasswordInput(): void {

@@ -19,7 +19,6 @@
           <div class="checkbox-container" *ngIf="this.isUserOwner">
             <form [formGroup]="forms">
               <input type="checkbox"
-
                      name="isEditable"
                      value="isEditable"
                      formControlName="isEditable"
@@ -46,7 +45,6 @@
               <textarea autosize class="text-area-content"
                         placeholder="{{ 'label.commentary' | translate}}"
                         formControlName="codeCommentary"
-                        rows="15"
                         [readOnly]="this.isReadOnly"
                         required >
               </textarea>
@@ -90,10 +88,8 @@
           <div class="display-content-container-text-area" *ngIf="this.codePage.codeCommentary != '' ">
             <form [formGroup]="forms" >
               <textarea autosize class="text-area-content"
-                        id="code"
                         placeholder="{{ 'label.commentary' | translate}}"
                         formControlName="codeCommentary"
-                        rows="15"
                         [readOnly]="this.isReadOnly"
                         required >
               </textarea>

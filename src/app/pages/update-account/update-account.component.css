@@ -45,6 +45,11 @@
   margin: 2vh 0;
 }
 
+.successMessage {
+  text-align: center;
+  color: limegreen !important;
+}
+
 @media screen and (max-width: 1000px) {
   .content-container {
     width: 80%;

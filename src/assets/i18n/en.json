@@ -81,7 +81,8 @@
   },
   "success": {
     "account-created": "Your account has been created, we will redirect you in a few seconds!",
-    "password-recover": "Your password has been changed, you will be redirected in a moment."
+    "password-recover": "Your password has been changed, you will be redirected in a moment.",
+    "account-update": "Update, Please log in again !"
   },
   "label": {
     "email": "Email...",

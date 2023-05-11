@@ -39,7 +39,7 @@ export class PageEditComponent implements OnInit{
         this.router.navigate(['user/project', this.projectUuid, 'pages']);
       });
     } else {
-      this.codePageService.updateCodePage(this.projectUuid, this.forms.value).subscribe(resp => {
+      this.codePageService.updateCodePage(this.codePageUuid, this.forms.value).subscribe(resp => {
         this.router.navigate(['user/project', this.projectUuid, 'pages']);
       });
     }
@@ -52,6 +52,7 @@ export class PageEditComponent implements OnInit{
   private initializeForm(): void {
     this.forms = this.formBuilder.group(
       {
+        codePageUuid: '',
         projectUuid: this.projectUuid,
         name: ['', Validators.required],
         language: ['', Validators.required],

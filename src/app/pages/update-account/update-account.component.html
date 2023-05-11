@@ -1,6 +1,10 @@
 <div class="content-wrapper">
   <div class="content-container">
     <h2 class="title">{{ 'page.update-account.title' | translate }}</h2>
+
+    <div class="successMessage" *ngIf="this.successMessage">
+      <p> {{ 'success.account-update' | translate }}</p>
+    </div>
     <div class="form-container">
       <form [formGroup]="forms">
         <div class="form-group">
