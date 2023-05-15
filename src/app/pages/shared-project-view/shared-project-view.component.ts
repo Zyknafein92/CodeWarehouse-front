@@ -107,8 +107,13 @@ export class SharedProjectViewComponent implements OnInit {
   private patchValue(): void {
     this.codePageService.getCodePage(this.codePage.codePageUuid).subscribe( data => {
       this.forms.patchValue({
+        codePageUuid: data.codePageUuid,
+        projectUuid: data.projectUuid,
+        name: data.name,
+        language: data.language,
         isEditable : data.isEditable,
         codeCommentary: data.codeCommentary,
+        codeTextContent: data.codeTextContent
       })
     });
   }
@@ -155,7 +160,9 @@ export class SharedProjectViewComponent implements OnInit {
   }
 
   saveCodeCommentary() {
-    this.codePageService.updateCodePage(this.codePage.codePageUuid, this.forms.value).subscribe( res => {
+    let codePageUpdated = this.codePage;
+    codePageUpdated.codeCommentary = this.forms.get('codeCommentary')?.value;
+    this.codePageService.updateCodePage(this.codePage.codePageUuid, codePageUpdated).subscribe( res => {
       this.codePage = res;
       this.checkifModificationAllowed();
     });
